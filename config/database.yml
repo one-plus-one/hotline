@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: hotline_production
-  username: hotline
-  password: <%= ENV['HOTLINE_DATABASE_PASSWORD'] %>
+  # database: hotline_production
+  # username: hotline
+  DATABASE_URL="mysql2://b0fb14d24f1240:a75d6c34@us-cdbr-iron-east-01.cleardb.net/heroku_3a9140c1201c4d1?reconnect=true"
+  # password: <%= ENV['HOTLINE_DATABASE_PASSWORD'] %>

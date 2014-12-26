@@ -25,7 +25,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'unicorn'
 
 group :test do
-  gem 'rspec'
   gem "rspec-rails", ">= 2.0.1"
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended

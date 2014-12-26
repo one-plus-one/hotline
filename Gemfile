@@ -24,6 +24,14 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'unicorn'
 
+group :test do
+  gem 'rspec'
+  gem "rspec-rails", ">= 2.0.1"
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+end
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

@@ -29,6 +29,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 # bundle exec rake doc:rails generates the API under doc/api.

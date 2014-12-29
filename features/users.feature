@@ -4,6 +4,6 @@ Feature: Contact me
     Should send me a message by contact form
  
     Scenario: Sends a contact message
-        Given I am on the users page
-        Then I should see "Log in" on the page
-        
+    Given I am on the users page
+    Then I should login page
+    Then I should see "Log in" on the page

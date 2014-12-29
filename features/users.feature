@@ -5,5 +5,5 @@ Feature: Contact me
  
     Scenario: Sends a contact message
         Given I am on the users page
-        Then I should see "Listing users" on the page
+        Then I should see "Log in" on the page
         

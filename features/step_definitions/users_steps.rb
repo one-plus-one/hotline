@@ -5,9 +5,9 @@ Given(/^I am on (.+)$/) do |page_name|
 end
 
 Then(/^I should login page$/) do
-  fill_in("user[email]",:with => "wolfwubang@gmail.com")
+  fill_in("user[username]",:with => "wolfwubang@gmail.com")
   fill_in("user[password]",:with => "12345678")
-  click_button("Log in")
+  click_button("登录")
   #expect(page).to have_content(expceted_text)
 end
 

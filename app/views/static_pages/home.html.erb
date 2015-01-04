@@ -1,2 +1,2 @@
 <%= current_user.username %>
-<%= link_to "Sign out", destroy_user_session_path(current_user) %>
+<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-link"%>  

@@ -15,6 +15,7 @@ en:
           attributes:
             username:
               blank: "不能为空"
+              taken: "已被占用"
             email:
               blank: "不能为空"
               taken: "已被占用"

@@ -17,6 +17,7 @@ en:
               blank: "不能为空"
             email:
               blank: "不能为空"
+              taken: "已被占用"
             password:
               blank: "不能为空"
               too_short: "太短了"

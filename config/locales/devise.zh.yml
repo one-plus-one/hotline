@@ -1,6 +1,27 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 en:
+  activerecord:
+    attributes:
+        user:
+          email: "邮箱"
+          password: "密码"
+          username: "用户名"
+          password_confirmation: "确认密码"
+
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank: "不能为空"
+            email:
+              blank: "不能为空"
+            password:
+              blank: "不能为空"
+              too_short: "太短了"
+            password_confirmation:
+              confirmation: "不匹配"
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."

@@ -56,7 +56,7 @@ function ws_send_data() {
 }
 
 function login(){
-    location.href="wisexclient:login?agentid=1003&passwd=1234&name=Johnson";
+    location.href="wisexclient:login?agentid=1109&passwd=Hanwin@20!4&name=Johnson";
 }
 function dial(){
     location.href="wisexclient:dial?ani=31119104&dnis=718930430189";

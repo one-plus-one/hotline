@@ -1,11 +1,3 @@
-$('#main').ready(function() {
-	    var log = $('log');
-        console.log('ready function');
-	    ws_connect();
-        login();
-}
-	
-);
 
 function ws_connect(){
 	if ("WebSocket" in window) {

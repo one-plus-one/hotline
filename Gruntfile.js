@@ -9,9 +9,9 @@ module.exports = function(grunt){
             },
             build: {
                 //src: 'src/<%=pkg.name %>.js',
-                src: './app/assets/javascripts/<%=pkg.name %>.js',
+                src: './app/js/home/main.js',
                 //dest: 'build/<%= pkg.name %>.min.js'
-                dest: './app/assets/javascripts/<%= pkg.name %>.min.js'
+                dest: './app/assets/javascripts/home.min.js'
             }               
         },
         concat_css: {

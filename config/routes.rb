@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'static_pages/oncall'
 
+  get 'static_pages/about'
+
   devise_for :users
   resources :users
 

@@ -1,0 +1,62 @@
+
+	<div id="top-header">
+		<h2>13501026578来电</h2>
+	</div>
+
+	<%= form_for User.new do |f| %>
+	<div class="left">
+		<fieldset>
+			<legend>ALT+Q</legend>
+			<div>
+				<%= f.label :姓名 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+    			<%= f.label :年龄 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+    			<%= f.label :残障程度 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+			</div>
+		</fieldset>
+	</div>
+	
+	<div class="right">
+		<fieldset>
+			<legend>ALT+W</legend>
+			<div>
+				<%= f.label :学历 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+    			<%= f.label :工作 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+    			<%= f.label :婚否 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="left bottom">
+		<fieldset>
+			<legend>ALT+A</legend>
+			<div>
+				<%= f.label :地点 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+    			<%= f.label :城乡 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+    			<%= f.label :渠道 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+			</div>
+		</fieldset>
+	</div>
+
+	<div class="right bottom">
+		<fieldset>
+			<legend>ALT+S</legend>
+			<div>
+				<%= f.label :问题 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+    			<%= f.label :答案 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+    			<%= f.label :备注 %>
+    			<%= f.text_field :username, autofocus: true,:class => "form-control" %>
+			</div>
+		</fieldset>
+	</div>
+<% end %>

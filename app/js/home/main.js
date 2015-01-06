@@ -5,8 +5,8 @@ function ws_connect(){
 				ws.onopen = function(event) {
 					log.innerHTML+=
 						"<div class='green'>websocket connected</div>";
-					connect.style.display = 'none';
-					tools.style.display = 'block';
+					//connect.style.display = 'none';
+					//tools.style.display = 'block';
 				};
 
 				ws.onerror = function(event) {
@@ -28,7 +28,7 @@ function ws_connect(){
 				ws.onclose = function(event) {
 					log.innerHTML+=
 						"<div class='red'>websocket closed</div>";
-					connect.style.display = 'block';
+					//connect.style.display = 'block';
 					tools.style.display = 'none';
 				};
 			} else {

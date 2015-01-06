@@ -17,12 +17,13 @@
 <%= link_to '协商转移'%>
 <%= link_to '三方会议'%>
 <%= link_to '查询坐席状态'%>
-<%= link_to '弹屏测试按钮', static_pages_oncall_path%>
+<%= link_to '弹屏测试按钮', static_pages_oncall_path %>
+<button class="btn btn-primary">test</button>
 <script>
     $('#main').ready(function() {
                 ws_connect();
                 login();
             }
 
-    );
+        );
 </script>

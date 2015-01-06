@@ -17,6 +17,12 @@ function ws_connect(){
 				ws.onmessage = function(event) {
 					log.innerHTML+=
 						"<div>get message:<span class='data'>"+event.data+"</span></div>";
+          var data=event.data.split(",");
+          var ani=data[6].split(":")[1];
+          var status=data[3].split(":")[1];
+          if(status=='ringing'){
+            location.href = 'static_pages/oncall?tel='+ani;
+          }
 				};
 
 				ws.onclose = function(event) {

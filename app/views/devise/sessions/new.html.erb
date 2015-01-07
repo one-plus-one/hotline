@@ -5,12 +5,12 @@
   <% end %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
-      <%= f.label :用户名, :class=> "control-label" %>
+      <%= f.label :username, :class=> "control-label" %>
       <%= f.text_field :username, autofocus: true,:class => "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :密码 %>
+      <%= f.label :password %>
       <%= f.password_field :password, autocomplete: "off",:class => "form-control"%>
 
     </div>

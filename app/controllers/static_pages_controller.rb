@@ -11,6 +11,6 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    @tel = params[:tel]
+
   end
 end

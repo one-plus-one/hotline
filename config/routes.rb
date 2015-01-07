@@ -3,9 +3,13 @@ Rails.application.routes.draw do
 
   get 'static_pages/help'
 
+
   get 'static_pages/oncall'
 
   get 'static_pages/about/:tel' => 'static_pages#about'
+
+ # get 'static_pages/about'
+
 
   devise_for :users
   resources :users

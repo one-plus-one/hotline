@@ -1,2 +1,4 @@
 <h1 style="width: 300px"><%= @tel %>来电</h1>
-<%= link_to("跳转",{:controller => 'static_pages_controller', :action => 'about', :tel=<%= @tel%>}) %>
+
+
+<%= link_to("跳转",{:controller => 'static_pages', :action => 'about', :tel => @tel })%>

@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
   end
 
   def oncall
-    @tel = params[:tel]
+    # @tel = params[:tel]
   end
 
   def about

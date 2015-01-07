@@ -65,6 +65,7 @@ function offhook() {
 
 function onhook() {
     location.href = "wisexclient:onhook";
+    location.href = "/static_pages/about";
 }
 
 function setbusy() {

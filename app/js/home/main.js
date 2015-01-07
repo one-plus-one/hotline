@@ -28,7 +28,7 @@ function ws_connect() {
             log.innerHTML +=
                 "<div class='red'>websocket closed</div>";
             //connect.style.display = 'block';
-            tools.style.display = 'none';
+            //tools.style.display = 'none';
         };
     } else {
         // the browser doesn't support WebSocket
@@ -63,9 +63,9 @@ function offhook() {
     location.href = "wisexclient:offhook";
 }
 
-function onhook() {
+function onhook(tel) {
     location.href = "wisexclient:onhook";
-    location.href = "/static_pages/about";
+    location.href = "/static_pages/about/" + tel;
 }
 
 function setbusy() {

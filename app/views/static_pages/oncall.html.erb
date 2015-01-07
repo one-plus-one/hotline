@@ -1,5 +1,3 @@
 <h1 style="width: 300px"><%= @tel %>来电</h1>
 
-<button onclick="offhook();">拒接来电</button><button onclick="onhook();">接电话</button>
-
-<%= link_to("跳转",{:controller => 'static_pages', :action => 'about', :tel => @tel })%>
+<button onclick="offhook();">拒接来电</button><button onclick="onhook(<%= @tel %>);">接电话</button>

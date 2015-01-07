@@ -20,7 +20,7 @@ function ws_connect() {
             var ani = data[6].split(":")[1];
             var status = data[3].split(":")[1];
             if (status == 'ringing') {
-                location.href = 'static_pages/oncall?tel=' + ani;
+                location.href = 'oncall/' + ani;
             }
         };
 
@@ -65,7 +65,7 @@ function offhook() {
 
 function onhook(tel) {
     location.href = "wisexclient:onhook";
-    location.href = "/static_pages/about/" + tel;
+    location.href = "/answer/" + tel;
 }
 
 function setbusy() {

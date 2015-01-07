@@ -1,20 +1,14 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
+  get 'dashboard/home'
 
-  get 'static_pages/help'
+  get 'oncall/:tel' => 'dashboard#oncall'
 
-
-  get 'static_pages/oncall'
-
-  get 'static_pages/about/:tel' => 'static_pages#about'
-
- # get 'static_pages/about'
-
+  get 'answer/:tel' => 'dashboard#workorder'
 
   devise_for :users
   resources :users
 
-  root to: "static_pages#home"
+  root to: "dashboard#home"
   #root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

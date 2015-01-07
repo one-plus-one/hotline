@@ -1,4 +1,4 @@
-class StaticPagesController < ApplicationController
+class DashboardController < ApplicationController
   before_action :authenticate_user!
   def home
   end
@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
   end
 
 
-  def about
+  def workorder
 
   end
 end

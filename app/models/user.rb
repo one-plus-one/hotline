@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
    validates_presence_of :username,  :blank => false 
    validates_uniqueness_of :username
+   has_many :work_orders
 end

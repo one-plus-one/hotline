@@ -11,7 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230101451) do
+ActiveRecord::Schema.define(version: 20150108064236) do
+
+  create_table "customer_questions", force: true do |t|
+    t.string   "title"
+    t.string   "answer"
+    t.string   "note"
+    t.integer  "work_order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "customer_questions", ["work_order_id"], name: "index_customer_questions_on_work_order_id", using: :btree
+
+  create_table "customers", force: true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.string   "gender"
+    t.integer  "phone_num"
+    t.string   "disability_degree"
+    t.string   "education"
+    t.string   "occupation"
+    t.boolean  "marital_status"
+    t.string   "address"
+    t.string   "address_type"
+    t.string   "channel"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phone_records", force: true do |t|
+    t.string   "phone_num"
+    t.integer  "duration"
+    t.boolean  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "work_order_id"
+  end
+
+  add_index "phone_records", ["work_order_id"], name: "index_phone_records_on_work_order_id", using: :btree
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
@@ -31,5 +69,16 @@ ActiveRecord::Schema.define(version: 20141230101451) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "work_orders", force: true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "customer_id"
+    t.integer  "users_id"
+  end
+
+  add_index "work_orders", ["customer_id"], name: "index_work_orders_on_customer_id", using: :btree
+  add_index "work_orders", ["users_id"], name: "index_work_orders_on_users_id", using: :btree
 
 end

@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150108064236) do
     t.string   "name"
     t.integer  "age"
     t.string   "gender"
-    t.integer  "phone_num"
+    t.integer  "phone_num",         null: false
     t.string   "disability_degree"
     t.string   "education"
     t.string   "occupation"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150108064236) do
   end
 
   create_table "phone_records", force: true do |t|
-    t.string   "phone_num"
+    t.string   "phone_num",     null: false
     t.integer  "duration"
     t.boolean  "status"
     t.datetime "created_at"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20150108064236) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "work_orders", force: true do |t|
-    t.string   "status"
+    t.string   "status",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_id"

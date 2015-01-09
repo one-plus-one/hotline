@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :users
 
   root to: "dashboard#home"
+
+  resources :customers
+  resources :dashboard
   #root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

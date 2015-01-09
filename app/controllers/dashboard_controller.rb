@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_tel, only: [:oncall, :workorder]
+  before_action :require_tel, only: [:oncall, :workorder, :create]
   def home
   end
 
@@ -13,7 +13,44 @@ class DashboardController < ApplicationController
   end
 
   def workorder
+    # @dashboard = Customer.find_by_phone_num(params[:tel])
+    # if @dashboard == nil
+    #   @dashboard = Customer.new
+    #   @dashboard.phone_num=params[:tel]
+    # end
+  end
 
+  def create
+    customer  = Customer.new
+    customer.name = params[:dashboard][:name]
+    customer.age = params[:dashboard][:age]
+    customer.gender = params[:dashboard][:gender]
+    customer.disability_degree = params[:dashboard][:disability_degree]
+    customer.education = params[:dashboard][:education]
+    customer.occupation = params[:dashboard][:occupation]
+    customer.marital_status = params[:dashboard][:marital_status]
+    customer.address = params[:dashboard][:address]
+    customer.address_type = params[:dashboard][:address_type]
+    customer.channel = params[:dashboard][:channel]
+    customer.phone_num = params[:dashboard][:phone_num]
+    customer.save
+
+    #创建工单
+    workorder = WorkOrder.new
+    workorder.status = params[:dashboard][:status]
+    workorder.customer_id = customer.id    #获取到当前的customerID
+    workorder.users_id = current_user.id   #获取到当前的userID
+    workorder.save
+
+    # 创建问题表
+    customerQestion = CustomerQuestion.new
+    customerQestion.title = params[:dashboard][:title]
+    customerQestion.answer = params[:dashboard][:answer]
+    customerQestion.note = params[:dashboard][:note]
+    customerQestion.work_order_id = workorder.id
+    customerQestion.save
+
+    redirect_to dashboard_home_path
   end
 
   private

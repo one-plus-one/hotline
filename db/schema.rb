@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150108064236) do
     t.string   "name"
     t.integer  "age"
     t.string   "gender"
-    t.integer  "phone_num",         null: false
+    t.string   "phone_num",         null: false
     t.string   "disability_degree"
     t.string   "education"
     t.string   "occupation"

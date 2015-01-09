@@ -4,7 +4,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string  :name
       t.integer :age
       t.string  :gender
-      t.integer :phone_num, null:false, unique:true
+      t.string :phone_num, null:false, unique:true
       t.string  :disability_degree
       t.string  :education
       t.string  :occupation

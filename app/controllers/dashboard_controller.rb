@@ -19,7 +19,6 @@ class DashboardController < ApplicationController
       @customer.phone_num=params[:tel]
       @customer.save!
     end
-    @id=@customer.id
   end
 
   def create

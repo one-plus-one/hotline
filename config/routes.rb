@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   root to: "dashboard#home"
 
-  resources :customers
   resources :dashboard
   #root 'users#index'
 

@@ -13,15 +13,17 @@ class DashboardController < ApplicationController
   end
 
   def workorder
-    # @dashboard = Customer.find_by_phone_num(params[:tel])
-    # if @dashboard == nil
-    #   @dashboard = Customer.new
-    #   @dashboard.phone_num=params[:tel]
-    # end
+    @customer = Customer.find_by_phone_num(params[:tel])
+    if @customer == nil
+      @customer = Customer.new
+      @customer.phone_num=params[:tel]
+      @customer.save!
+    end
+    @id=@customer.id
   end
 
   def create
-    customer  = Customer.new
+    customer  = Customer.find_by_id(params[:dashboard][:id])
     customer.name = params[:dashboard][:name]
     customer.age = params[:dashboard][:age]
     customer.gender = params[:dashboard][:gender]

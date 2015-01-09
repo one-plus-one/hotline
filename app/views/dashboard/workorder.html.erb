@@ -8,14 +8,14 @@
 		<fieldset>
 			<legend>ALT+Q</legend>
 			<div>
+
 				<%= f.label :姓名 %>
-    			<%= f.text_field :name, autofocus: true,:class => "form-control", accesskey: "q" %>
+    			<%= f.text_field :name, autofocus: true,:class => "form-control", accesskey: "q" , value: @customer.name%>
     			<%= f.label :年龄 %>
-    			<%= f.text_field :age, autofocus: true,:class => "form-control" %>
+    			<%= f.text_field :age, autofocus: true,:class => "form-control" , value: @customer.age%>
                 <%= f.label :性别 %>
-    			<%= f.text_field :gender, autofocus: true,:class => "form-control" %>
-    			<%= f.label :残障程度 %>
-    			<%= f.text_field :disability_degree, autofocus: true,:class => "form-control" %>
+    			<%= f.text_field :gender, autofocus: true,:class => "form-control" , value: @customer.gender%>
+
 			</div>
 		</fieldset>
 	</div>
@@ -25,14 +25,13 @@
 			<legend>ALT+W</legend>
 			<div>
 				<%= f.label :学历 %>
-    			<%= f.text_field :education, autofocus: true,:class => "form-control", accesskey: "w" %>
+    			<%= f.text_field :education, autofocus: true,:class => "form-control", accesskey: "w" , value: @customer.education%>
     			<%= f.label :工作 %>
-    			<%= f.text_field :occupation, autofocus: true,:class => "form-control" %>
+    			<%= f.text_field :occupation, autofocus: true,:class => "form-control" , value: @customer.occupation%>
     			<%= f.label :婚否 %>
-    			<%= f.text_field :marital_status, autofocus: true,:class => "form-control" %>
-                <%= f.label :电话 %>
-                <%= f.text_field :phone_num, autofocus: true,:class => "form-control", value: @tel%>
-
+    			<%= f.text_field :marital_status, autofocus: true,:class => "form-control" , value: @customer.marital_status%>
+                <%= f.hidden_field :phone_num, autofocus: true,:class => "form-control", value: @tel%>
+                <%= f.hidden_field :id, autofocus: true,:class => "form-control", value: @customer.id%>
 			</div>
 		</fieldset>
 	</div>
@@ -42,11 +41,13 @@
 			<legend>ALT+A</legend>
 			<div>
 				<%= f.label :地点 %>
-    			<%= f.text_field :address, autofocus: true,:class => "form-control", accesskey: "a" %>
+    			<%= f.text_field :address, autofocus: true,:class => "form-control", accesskey: "a" , value: @customer.address%>
     			<%= f.label :城乡 %>
-    			<%= f.text_field :address_type, autofocus: true,:class => "form-control" %>
+    			<%= f.text_field :address_type, autofocus: true,:class => "form-control" , value: @customer.address_type%>
     			<%= f.label :渠道 %>
-    			<%= f.text_field :channel, autofocus: true,:class => "form-control" %>
+    			<%= f.text_field :channel, autofocus: true,:class => "form-control" , value: @customer.channel%>
+                <%= f.label :残障程度 %>
+                <%= f.text_field :disability_degree, autofocus: true,:class => "form-control" , value: @customer.disability_degree%>
 			</div>
 		</fieldset>
 	</div>

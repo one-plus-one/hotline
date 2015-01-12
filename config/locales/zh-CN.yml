@@ -19,6 +19,16 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-zh:
-  hello: "你好"
-  name: "名称"
+zh-CN:
+  dashboard:
+    workorder:
+      name: "姓名"
+      age: "年龄"
+      gender: "性别"
+      occupation: "工作"
+      education: "学历"
+      marital_status: "婚否"
+      address: "地址"
+      address_type: "城乡"
+      channel: "渠道"
+      disability_degree: "残障程度"

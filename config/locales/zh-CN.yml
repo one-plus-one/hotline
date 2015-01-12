@@ -20,6 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 zh-CN:
+  login:
+    username:
+      placeholder: "请输入用户名"
+    password:
+      placeholder: "请输入密码"
   dashboard:
     workorder:
       name: "姓名"

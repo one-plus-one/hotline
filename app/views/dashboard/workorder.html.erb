@@ -55,13 +55,13 @@
 		<fieldset>
 			<legend>ALT+S</legend>
 			<div>
-				<%= f.label :title %>
+				<%= f.label :title, t('.title') %>
     			<%= f.text_field :title, autofocus: true, :class => "form-control", accesskey: "s" %>
-    			<%= f.label :answer %>
+    			<%= f.label :answer, t('.answer') %>
     			<%= f.text_field :answer, autofocus: true, :class => "form-control" %>
-    			<%= f.label :note %>
+    			<%= f.label :note, t('.note') %>
     			<%= f.text_field :note, autofocus: true, :class => "form-control" %>
-                <%= f.label :status %>
+                <%= f.label :status, t('.status') %>
                 <%= f.text_field :status, autofocus: true, :class => "form-control" %>
 			</div>
 		</fieldset>

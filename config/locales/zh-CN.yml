@@ -37,3 +37,7 @@ zh-CN:
       address_type: "城乡"
       channel: "渠道"
       disability_degree: "残障程度"
+      title: "问题"
+      answer: "答案"
+      note: "备注"
+      status: "状态"

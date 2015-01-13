@@ -2,7 +2,8 @@
 <div id="log"></div>
 
 <%= current_user.username %>
-<%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-link"%></br>
+<%= link_to '退出登录', destroy_user_session_path, :method => :delete, :class => "btn btn-link"%></br>
+<%= link_to '我的工单', dashboard_index_id_path(current_user)%>
 <%= link_to '拨号'%>
 <%= link_to '应答'%>
 <%= link_to '挂断'%>

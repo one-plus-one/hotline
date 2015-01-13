@@ -12,6 +12,10 @@ class DashboardController < ApplicationController
 
   end
 
+  def index
+    @workorders = WorkOrder.where("users_id = ?",params[:id])
+  end
+
   def workorder
     @customer = Customer.find_by_phone_num(params[:tel])
     if @customer == nil

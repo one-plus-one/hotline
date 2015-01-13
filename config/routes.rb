@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root to: "dashboard#home"
 
   resources :dashboard
+  get 'dashboard/index/:id' => 'dashboard#index',as: 'dashboard_index_id'
   #root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

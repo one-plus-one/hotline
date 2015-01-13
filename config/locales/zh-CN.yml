@@ -26,6 +26,12 @@ zh-CN:
     password:
       placeholder: "请输入密码"
   dashboard:
+    index:
+      create_time: "创建时间"
+      solved: "解决"
+      unsolved: "未解决"
+      status: "工单状态"
+      customer_id: "客户ID"
     workorder:
       name: "姓名"
       age: "年龄"

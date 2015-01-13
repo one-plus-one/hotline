@@ -1,0 +1,24 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t(".create_time")%></th>
+      <th><%= t(".status")%></th>
+      <th><%= t(".customer_id")%></th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <% @workorders.each do |workorder| %>
+    <tr>
+      <td><%= workorder.created_at.to_time %></td>
+      <td>
+        <%if workorder.status== 'true' %>
+          <%= t(".solved")%>
+        <% else %>
+          <%= t(".unsolved") %>
+        <% end %>
+      </td>
+      <td><%= workorder.customer_id %></td>
+      <td><%= link_to 'edit'%></td>
+    </tr>
+  <% end %>
+</table>

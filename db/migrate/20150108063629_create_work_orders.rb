@@ -4,8 +4,9 @@ class CreateWorkOrders < ActiveRecord::Migration
       t.string     :status,       deflaut:'未解决', null:false
       t.timestamps :created_at
       t.timestamps :updated_at
-      t.belongs_to :customer, index:true
-      t.belongs_to :users, index:true
+      t.references  :user
+      t.references  :customer
+      t.references  :phone_record
       t.timestamps
     end
   end

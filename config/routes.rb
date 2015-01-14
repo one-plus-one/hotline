@@ -3,18 +3,17 @@ Rails.application.routes.draw do
 
   get 'oncall/:tel' => 'dashboard#oncall'
 
-  get 'answer/:tel' => 'dashboard#workorder'
+  get 'answer/:tel' => 'dashboard#answer'
 
   devise_for :users
   resources :users
 
   root to: "dashboard#home"
 
-  resources :dashboard
-  resources :workorder
+  resources :work_orders
 
-  get 'workorder/index/:id' => 'workorder#index',as: 'workorder_index_id'
-  post 'workorder/:id' => 'workorder#update',as: 'update_workorder'
+  # get 'workorder/index/:id' => 'workorder#index',as: 'workorder_index_id'
+  # post 'workorder/:id' => 'workorder#update',as: 'update_workorder'
   #root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

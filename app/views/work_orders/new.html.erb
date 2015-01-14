@@ -1,0 +1,117 @@
+<div id="top-header">
+  <h2><%= @tel %>来电</h2>
+</div>
+
+<%= form_for @work_order, method: :post do |f| %>
+
+<%= f.fields_for :customer, @work_order.customer do |c| %>
+
+    <div class="left">
+      <fieldset>
+        <legend>ALT+Q</legend>
+        <div>
+          <%= c.label :name, t('customer.name') %>
+          <%= c.text_field :name, autofocus: true, :class => "form-control", accesskey: "q" %>
+          <%= c.label :age, t('customer.age') %>
+          <%= c.text_field :age, :class => "form-control" %>
+          <%= c.label :gender, t('customer.gender') %>
+          <%= c.text_field :gender, :class => "form-control" %>
+
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="right">
+      <fieldset>
+        <legend>ALT+W</legend>
+        <div>
+          <%= c.label :education, t('customer.education') %>
+          <%= c.text_field :education, autofocus: true, :class => "form-control", accesskey: "w" %>
+          <%= c.label :occupation, t('customer.occupation') %>
+          <%= c.text_field :occupation, :class => "form-control" %>
+          <%= c.label :marital_status, t('customer.marital_status') %>
+          <%= c.text_field :marital_status, :class => "form-control" %>
+          <%= c.hidden_field :phone_num, value: @tel %>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="left bottom" id="leftside">
+      <fieldset>
+        <legend>ALT+A</legend>
+        <div>
+          <%= c.label :address, t('customer.address') %>
+          <%= c.text_field :address, autofocus: true, :class => "form-control", accesskey: "a" %>
+          <%= c.label :address_type, t('customer.address_type') %>
+          <%= c.text_field :address_type, :class => "form-control" %>
+          <%= c.label :channel, t('customer.channel') %>
+          <%= c.text_field :channel, :class => "form-control" %>
+          <%= c.label :disability_degree, t('customer.disability_degree') %>
+          <%= c.text_field :disability_degree, :class => "form-control" %>
+        </div>
+      </fieldset>
+    </div>
+<% end %>
+<div class="right bottom">
+  <fieldset>
+    <legend>ALT+S</legend>
+    <div>
+      <% @work_order.customer_questions.each do |customer_question| %>
+          <%= f.fields_for :customer_questions, customer_question do |q| %>
+              <%= q.label :title, t('customer_question.title') %>
+              <%= q.text_field :title, :class => "form-control", accesskey: "s" %>
+              <%= q.label :answer, t('customer_question.answer') %>
+              <%= q.text_field :answer, :class => "form-control" %>
+              <%= q.label :note, t('customer_question.note') %>
+              <%= q.text_field :note, :class => "form-control" %>
+          <% end %>
+          <hr >
+      <% end %>
+
+      <%= f.label :status, t('work_order.status') %>
+      <%= f.text_field :status, :class => "form-control" %>
+    </div>
+  </fieldset>
+</div>
+
+
+<div class="right bottom">
+  <fieldset>
+  </fieldset>
+</div>
+
+<div>
+  <%= f.submit "提交", :class => "btn btn-danger" %>
+  <%= f.hidden_field :id %>
+
+</div>
+
+<% end %>
+
+<% unless(@work_order.customer.id==nil) then %>
+    <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal" id="testBtn">
+      历史问题
+    </button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">历史工单记录</h4>
+          </div>
+          <div class="modal-body">
+            工单信息在这里填充
+            <a href="http://www.baidu.com">百度一下，你就知道</a>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+
+
+
+
+

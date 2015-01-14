@@ -71,14 +71,12 @@ ActiveRecord::Schema.define(version: 20150108064236) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "work_orders", force: true do |t|
-    t.string   "status",      null: false
+    t.string   "status",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
     t.integer  "customer_id"
-    t.integer  "users_id"
+    t.integer  "phone_record_id"
   end
-
-  add_index "work_orders", ["customer_id"], name: "index_work_orders_on_customer_id", using: :btree
-  add_index "work_orders", ["users_id"], name: "index_work_orders_on_users_id", using: :btree
 
 end

@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  has_many :work_orders
+  has_one :work_order
 
   def save(params)
 

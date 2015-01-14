@@ -7,17 +7,17 @@
       <th colspan="1"></th>
     </tr>
   </thead>
-  <% @workorders.each do |workorder| %>
+  <% @work_orders.each do |work_order| %>
     <tr>
-      <td><%= link_to workorder.created_at, edit_workorder_path(workorder)%></td>
+      <td><%= link_to work_order.created_at, edit_work_order_path(work_order)%></td>
       <td>
-        <%if workorder.status== 'true' %>
+        <%if work_order.status== 'true' %>
           <%= link_to t(".solved")%>
         <% else %>
           <%= link_to t(".unsolved") %>
         <% end %>
       </td>
-      <td><%= link_to Customer.find(workorder.customer_id).name %></td>
+      <td><%= link_to Customer.find(work_order.customer_id).name %></td>
       <td><%= link_to 'edit'%></td>
     </tr>
   <% end %>

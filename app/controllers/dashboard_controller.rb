@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
     @customer = Customer.find_by_phone_num(params[:tel])
     if @customer == nil
       @customer = Customer.new
-      @customer.phone_num=params[:tel]
+      # @customer.phone_num=params[:tel]
       @customer.save!
     end
   end

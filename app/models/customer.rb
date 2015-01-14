@@ -6,6 +6,7 @@ class Customer < ActiveRecord::Base
     self.name = params[:name]
     self.age = params[:age]
     self.gender = params[:gender]
+    self.phone_num = params[:phone_num]
     self.disability_degree = params[:disability_degree]
     self.education = params[:education]
     self.occupation = params[:occupation]

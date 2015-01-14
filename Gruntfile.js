@@ -7,12 +7,29 @@ module.exports = function(grunt){
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            build: {
-                //src: 'src/<%=pkg.name %>.js',
-                src: './app/js/home/main.js',
-                //dest: 'build/<%= pkg.name %>.min.js'
-                dest: './app/assets/javascripts/home.min.js'
-            }               
+            //build: {
+            //    //src: 'src/<%=pkg.name %>.js',
+            //    src: './app/js/home/main.js',
+            //    //dest: 'build/<%= pkg.name %>.min.js'
+            //    dest: './app/assets/javascripts/home.min.js'
+            //},
+            //build: {
+            //    src: './bower_components/boostrap/dist/js/bootstrap.min.js',
+            //    dest: './app/assets/javascripts/home.min.js'
+            //}
+            static_mappings:{
+                files:[
+                    {
+                        src: './app/js/home/main.js',
+                        dest: './app/assets/javascripts/home.min.js'
+                    },
+                    {
+                        src: './bower_components/bootstrap/dist/js/bootstrap.min.js',
+                        dest: './app/assets/javascripts/bootstrap.min.js'
+                    }
+                ]
+            }
+
         },
         concat_css: {
             all: {

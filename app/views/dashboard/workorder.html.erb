@@ -1,15 +1,14 @@
-
-	<div id="top-header">
+<div id="top-header">
 		<h2><%= @tel %>来电</h2>
 	</div>
 
 	<%= form_for :workorder, url: dashboard_index_path, method: :post do |f| %>
 	<div class="left">
 		<fieldset>
-			<legend>ALT+Q</legend>
+			<!--<legend>ALT+Q</legend>-->
 			<div>
-				<%= f.label :name, t('.name') %>
-    			<%= f.text_field :name, autofocus: true,:class => "form-control", accesskey: "q" , value: @customer.name%>
+				<%= f.label :name, t('.name'), accesskey: "q" %>
+    			<%= f.text_field :name, autofocus: true,:class => "form-control" , value: @customer.name%>
     			<%= f.label :age, t('.age')%>
     			<%= f.text_field :age, autofocus: true,:class => "form-control" , value: @customer.age%>
                 <%= f.label :gender, t('.gender') %>
@@ -23,8 +22,8 @@
 		<fieldset>
 			<legend>ALT+W</legend>
 			<div>
-				<%= f.label :education, t('.education') %>
-    			<%= f.text_field :education, autofocus: true,:class => "form-control", accesskey: "w" , value: @customer.education%>
+				<%= f.label :education, t('.education'), accesskey: "w" %>
+    			<%= f.text_field :education, autofocus: true,:class => "form-control" , value: @customer.education%>
     			<%= f.label :occupation, t('.occupation') %>
     			<%= f.text_field :occupation, autofocus: true,:class => "form-control" , value: @customer.occupation%>
     			<%= f.label :marital_status, t('.marital_status') %>
@@ -39,8 +38,8 @@
 		<fieldset>
 			<legend>ALT+A</legend>
 			<div>
-				<%= f.label :address, t('.address') %>
-    			<%= f.text_field :address, autofocus: true,:class => "form-control", accesskey: "a" , value: @customer.address%>
+				<%= f.label :address, t('.address'), accesskey: "a" %>
+    			<%= f.text_field :address, autofocus: true,:class => "form-control" , value: @customer.address%>
     			<%= f.label :address_type, t('.address_type') %>
     			<%= f.text_field :address_type, autofocus: true,:class => "form-control" , value: @customer.address_type%>
     			<%= f.label :channel, t('.channel') %>
@@ -55,8 +54,8 @@
 		<fieldset>
 			<legend>ALT+S</legend>
 			<div>
-				<%= f.label :title, t('.title') %>
-    			<%= f.text_field :title, autofocus: true, :class => "form-control", accesskey: "s" %>
+				<%= f.label :title, t('.title'), accesskey: "s"  %>
+    			<%= f.text_field :title, autofocus: true, :class => "form-control"%>
     			<%= f.label :answer, t('.answer') %>
     			<%= f.text_field :answer, autofocus: true, :class => "form-control" %>
     			<%= f.label :note, t('.note') %>
@@ -65,9 +64,34 @@
                 <%= f.text_field :status, autofocus: true, :class => "form-control" %>
 			</div>
 		</fieldset>
+
+
 	</div>
 
         <div>
           <%= f.submit "提交", :class => "btn btn-danger" %>
         </div>
 <% end %>
+
+
+    <% unless(@customer==nil) then %>
+        <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal" id="testBtn">
+             历史问题
+        </button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">历史工单记录</h4>
+                    </div>
+                    <div class="modal-body">
+                      工单信息在这里填充
+                      <a href="http://www.baidu.com">百度一下，你就知道</a>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>

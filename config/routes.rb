@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   root to: "dashboard#home"
 
   resources :dashboard
-  get 'dashboard/index/:id' => 'dashboard#index',as: 'dashboard_index_id'
+  resources :workorder
+
+  get 'workorder/index/:id' => 'workorder#index',as: 'workorder_index_id'
+  post 'workorder/:id' => 'workorder#update',as: 'update_workorder'
   #root 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -18,13 +18,13 @@ class DashboardController < ApplicationController
     @customer = Customer.find_by_phone_num(params[:tel])
     if @customer == nil
       @customer = Customer.new
-      # @customer.phone_num=params[:tel]
-      @customer.save!
+      @customer.phone_num=params[:tel]
+      #@customer.save!
     end
   end
 
   def create
-    customer  = Customer.find_by_id(params[:workorder][:id])
+    customer  = Customer.new
     customer.save(params[:workorder])
 
     #创建工单

@@ -26,29 +26,14 @@ zh-CN:
     password:
       placeholder: "请输入密码"
   work_orders:
-      index:
-        create_time: "创建时间"
-        solved: "解决"
-        unsolved: "未解决"
-        status: "工单状态"
-        customer_name: "客户名称"
-  workorder:
-      edit:
-        name: "姓名"
-        age: "年龄"
-        gender: "性别"
-        occupation: "工作"
-        education: "学历"
-        marital_status: "婚否"
-        address: "地址"
-        address_type: "城乡"
-        channel: "渠道"
-        disability_degree: "残障程度"
-        title: "问题"
-        answer: "答案"
-        note: "备注"
-        status: "状态"
-  dashboard:
+    index:
+      create_time: "创建时间"
+      solved: "解决"
+      unsolved: "未解决"
+      status: "工单状态"
+      customer_name: "客户名称"
+  work_order:
+      status: "状态"
   customer:
     name: "姓名"
     age: "年龄"
@@ -60,8 +45,6 @@ zh-CN:
     address_type: "城乡"
     channel: "渠道"
     disability_degree: "残障程度"
-  work_order:
-    status: "状态"
   customer_question:
     title: "问题"
     answer: "答案"

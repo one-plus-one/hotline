@@ -34,6 +34,28 @@ class WorkOrdersController < ApplicationController
     redirect_to dashboard_home_path
   end
 
+  def update
+    customer  = initialize_customer(params[:work_order][:customer][:phone_num])
+    customer.save(params[:work_order][:customer])
+    # Customer.create(params[:work_order][:customer])
+
+    #创建工单
+    workorder = WorkOrder.find(params[:id])
+    workorder.save(params[:work_order],customer,current_user)
+
+
+    # 创建问题表
+    customer_questions = params[:work_order][:customer_questions_attributes]
+    if customer_questions != nil
+      customer_questions.each  do |question|
+        customer_question = CustomerQuestion.find(question[1][:id].to_i)
+        customer_question.save(question[1],workorder.id)
+      end
+    end
+
+    redirect_to dashboard_home_path
+  end
+
   def edit
     id = params[:id]
     @work_order = WorkOrder.find(id)

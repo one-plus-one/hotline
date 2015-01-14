@@ -1,4 +1,4 @@
-<%= form_for @work_order, method: :post do |f| %>
+<%= form_for @work_order do |f| %>
 
     <%= f.fields_for :customer, @work_order.customer do |c| %>
 
@@ -56,6 +56,7 @@
               <%= f.fields_for :customer_questions, customer_question do |q| %>
                   <%= q.label :title, t('customer_question.title') %>
                   <%= q.text_field :title, :class => "form-control", accesskey: "s" %>
+                  <%= q.hidden_field :id, :class => "form-control" %>
                   <%= q.label :answer, t('customer_question.answer') %>
                   <%= q.text_field :answer, :class => "form-control" %>
                   <%= q.label :note, t('customer_question.note') %>

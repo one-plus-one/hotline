@@ -25,7 +25,7 @@ zh-CN:
       placeholder: "请输入用户名"
     password:
       placeholder: "请输入密码"
-  workorder:
+  work_orders:
       index:
         create_time: "创建时间"
         solved: "解决"

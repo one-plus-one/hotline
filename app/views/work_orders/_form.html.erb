@@ -27,7 +27,11 @@
               <%= c.text_field :occupation, :class => "form-control" %>
               <%= c.label :marital_status, t('customer.marital_status') %>
               <%= c.text_field :marital_status, :class => "form-control" %>
-              <%= c.hidden_field :phone_num, value: @tel %>
+              <% if @work_order.customer.phone_num==nil %>
+                <%= c.hidden_field :phone_num, value: @tel%>
+              <% else %>
+                <%= c.hidden_field :phone_num %>
+              <% end %>
             </div>
           </fieldset>
         </div>

@@ -1,6 +1,7 @@
 class WorkOrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_phone_num, only: [:new]
+  before_action :save_and_update, only: [:create, :update]
 
   def index
     @work_orders = WorkOrder.where(:user_id => current_user.id)
@@ -13,46 +14,10 @@ class WorkOrdersController < ApplicationController
   end
 
   def create
-    customer  = initialize_customer(params[:work_order][:customer][:phone_num])
-    customer.save(params[:work_order][:customer])
-    # Customer.create(params[:work_order][:customer])
-
-    #创建工单
-    workorder = WorkOrder.new
-    workorder.save(params[:work_order],customer,current_user)
-
-
-    # 创建问题表
-    customer_questions = params[:work_order][:customer_questions_attributes]
-    if customer_questions != nil
-      customer_questions.each  do |question|
-        customer_question = CustomerQuestion.new
-        customer_question.save(question[1],workorder.id)
-      end
-    end
-
     redirect_to dashboard_home_path
   end
 
   def update
-    customer  = initialize_customer(params[:work_order][:customer][:phone_num])
-    customer.save(params[:work_order][:customer])
-    # Customer.create(params[:work_order][:customer])
-
-    #创建工单
-    workorder = WorkOrder.find(params[:id])
-    workorder.save(params[:work_order],customer,current_user)
-
-
-    # 创建问题表
-    customer_questions = params[:work_order][:customer_questions_attributes]
-    if customer_questions != nil
-      customer_questions.each  do |question|
-        customer_question = CustomerQuestion.find(question[1][:id].to_i)
-        customer_question.save(question[1],workorder.id)
-      end
-    end
-
     redirect_to dashboard_home_path
   end
 
@@ -69,5 +34,39 @@ class WorkOrdersController < ApplicationController
 
   def initialize_customer(phone_num)
     return Customer.find_by_phone_num(phone_num) || Customer.new
+  end
+
+  def initialize_work_order(id)
+    if id==nil
+      return WorkOrder.find(id)
+    else
+      return WorkOrder.new
+    end
+  end
+
+  def initialize_customer_question(id)
+    if id==0
+      return CustomerQuestion.new
+    else
+      return CustomerQuestion.find(id)
+    end
+  end
+
+  def save_and_update
+    customer  = initialize_customer(params[:work_order][:customer][:phone_num])
+    customer.save(params[:work_order][:customer])
+    #创建工单
+    workorder = initialize_work_order(params[:id])
+    workorder.save(params[:work_order],customer,current_user)
+
+
+    # 创建问题表
+    customer_questions = params[:work_order][:customer_questions_attributes]
+    if customer_questions != nil
+      customer_questions.each  do |question|
+        customer_question = initialize_customer_question(question[1][:id].to_i)
+        customer_question.save(question[1],workorder.id)
+      end
+    end
   end
 end

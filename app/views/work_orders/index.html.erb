@@ -4,7 +4,6 @@
       <th><%= t(".create_time")%></th>
       <th><%= t(".status")%></th>
       <th><%= t(".customer_name")%></th>
-      <th colspan="1"></th>
     </tr>
   </thead>
   <% @work_orders.each do |work_order| %>
@@ -12,13 +11,12 @@
       <td><%= link_to work_order.created_at, edit_work_order_path(work_order)%></td>
       <td>
         <%if work_order.status== 'true' %>
-          <%= link_to t(".solved")%>
+          <%= link_to t(".solved"), edit_work_order_path(work_order)%>
         <% else %>
-          <%= link_to t(".unsolved") %>
+          <%= link_to t(".unsolved") , edit_work_order_path(work_order)%>
         <% end %>
       </td>
-      <td><%= link_to Customer.find(work_order.customer_id).name %></td>
-      <td><%= link_to 'edit'%></td>
+      <td><%= link_to Customer.find(work_order.customer_id).name, edit_work_order_path(work_order)%></td>
     </tr>
   <% end %>
 </table>

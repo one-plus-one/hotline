@@ -32,6 +32,12 @@ zh-CN:
       unsolved: "未解决"
       status: "工单状态"
       customer_name: "客户名称"
+    new:
+      question: "问题"
+      answer: "答案"
+      note: "备注"
+      close: "关闭"
+      history_question: "历史问题"
   work_order:
       status: "状态"
   customer:
@@ -45,6 +51,7 @@ zh-CN:
     address_type: "城乡"
     channel: "渠道"
     disability_degree: "残障程度"
+    submit: "提交"
   customer_question:
     title: "问题"
     answer: "答案"

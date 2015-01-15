@@ -31,6 +31,10 @@ module.exports = function(grunt){
                         src: './app/js/home/cursorTab.js',
                         dest: './app/assets/javascripts/cursorTab.min.js'
                     },
+                    {
+                        src: './app/js/home/work_order_index.js',
+                        dest: './app/assets/javascripts/work_order_index.min.js'
+                    },
                 ]
             }
 

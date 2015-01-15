@@ -6,6 +6,7 @@ module ControllerHelpers
     else
       allow(request.env['warden']).to receive(:authenticate!).and_return(user)
       allow(controller).to receive(:current_user).and_return(user)
+      allow(user).to receive(:id).and_return(1)
     end
   end
 end

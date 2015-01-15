@@ -1,22 +1,52 @@
-<table class="table table-hover">
+<table class="table table-hover" onkeyup="keystoke()" onload="init()">
   <thead>
-    <tr>
-      <th><%= t(".create_time")%></th>
-      <th><%= t(".status")%></th>
-      <th><%= t(".customer_name")%></th>
-    </tr>
+  <tr>
+    <th><%= t(".create_time") %></th>
+    <th><%= t(".status") %></th>
+    <th><%= t(".customer_name") %></th>
+  </tr>
   </thead>
-  <% @work_orders.each do |work_order| %>
-    <tr>
-      <td><%= link_to work_order.created_at, edit_work_order_path(work_order)%></td>
-      <td>
-        <%if work_order.status== 'true' %>
-          <%= link_to t(".solved"), edit_work_order_path(work_order)%>
-        <% else %>
-          <%= link_to t(".unsolved") , edit_work_order_path(work_order)%>
-        <% end %>
-      </td>
-      <td><%= link_to Customer.find(work_order.customer_id).name, edit_work_order_path(work_order)%></td>
-    </tr>
+  <% @work_orders.each_with_index do |work_order, index| %>
+      <tr>
+        <td><%= link_to work_order.created_at, edit_work_order_path(work_order), id: '1:'+index.to_s %></td>
+        <td>
+          <% if work_order.status== 'true' %>
+              <%= link_to t(".solved"), edit_work_order_path(work_order), id: '2:'+index.to_s %>
+          <% else %>
+              <%= link_to t(".unsolved"), edit_work_order_path(work_order), id: '2:'+index.to_s %>
+          <% end %>
+        </td>
+        <td><%= link_to Customer.find(work_order.customer_id).name, edit_work_order_path(work_order), id: '3:'+index.to_s %></td>
+      </tr>
   <% end %>
 </table>
+
+<script language="javascript">
+    function keystoke(obj) {
+        var e = window.event;
+        var id = document.activeElement.id;
+        var points = id.split(":");
+        switch (e.keyCode) {
+            case 37:
+                get_focus(-1, 0);
+                break;
+            case 38:
+                get_focus(0, -1);
+                break;
+            case 39:
+                get_focus(1, 0);
+                break;
+            case 40:
+                get_focus(0, 1);
+                break;
+        }
+        function get_focus(x, y) {
+            var px = parseInt(points[0]) + x;
+            var py = parseInt(points[1]) + y;
+            document.getElementById(px + ":" + py).focus();
+        }
+    }
+
+
+
+</script>

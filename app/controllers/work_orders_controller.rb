@@ -16,10 +16,10 @@ class WorkOrdersController < ApplicationController
     #通过工单号取得问题(需要注意的问题就是一个工单原则上是可以有多条信息的)
     if @work_order.customer.id != nil
       @customer = Customer.find_by_phone_num(@tel)
-      @history_work_orders = WorkOrder.where(customer_id: @customer.id)
+      @history_work_orders = WorkOrder.where(customer_id: @customer.id).order(created_at: :desc)
       @arrays = Array.new
       @history_work_orders.each do |history_work_order|
-        history_questions = CustomerQuestion.where(work_order_id: history_work_order.id)
+        history_questions = CustomerQuestion.where(work_order_id: history_work_order.id).order(created_at: :desc)
         history_questions.each do |history_question|
           @arrays.push(history_question)
         end

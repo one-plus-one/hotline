@@ -38,6 +38,7 @@ zh-CN:
       note: "备注"
       close: "关闭"
       history_question: "历史问题"
+
   work_order:
       status: "状态"
   customer:

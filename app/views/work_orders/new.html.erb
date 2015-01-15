@@ -14,20 +14,32 @@
             <h4 class="modal-title" id="myModalLabel"><%= @arrays.count %></h4>
           </div>
           <div class="modal-body">
-            <table class="table table-hover">
+            <table class="table table-hover" id="tblGrid">
               <tr>
                 <td><%= t (".question") %></td>
                 <td><%= t (".answer") %></td>
                 <td><%= t (".note") %></td>
+                <td>提交时间</td>
               </tr>
-              <% @arrays.each_with_index do |array,page|%>
+              <% @arrays.each do |array|%>
                   <tr>
-                    <td><%= array.title %></td>
                     <td>
-                      <%= text_area_tag(:message, array.answer, size: "40x3") %> <!--主要是解决问题太长-->
+                      <!--<imput type="text" value=" <%= array.note %>" >-->
+                      <!--<%= array.title %>-->
+                      <input type="text" value="<%= array.note %>">
                     </td>
                     <td>
-                      <%= array.note %></td>
+                      <!--<%= text_area_tag(:message, array.answer, size: "40x3") %> 主要是解决问题太长-->
+                      <input type="text" value="<%= array.answer %>">
+                    </td>
+                    <td>
+                      <input type="text" value="<%= array.note %>">
+                      <!--<%= array.note %>-->
+                    </td>
+                    <td>
+                      <input type="text" value="<%= array.created_at %>">
+                      <!--<%= array.created_at %>-->
+                    </td>
                   </tr>
               <% end %>
             </table>
@@ -41,6 +53,20 @@
       </div>
     </div>
 <% end %>
+<script>
+
+    $('#myModal').on('shown.bs.modal', function () {
+        new tabTableInput("tblGrid","text");
+    });
+
+  var initTabTable = function() {
+      console.log('excuting...');
+      setTimeout(function() {
+
+      }, 400)
+  }
+</script>
+
 
 
 

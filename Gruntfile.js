@@ -26,7 +26,11 @@ module.exports = function(grunt){
                     {
                         src: './bower_components/bootstrap/dist/js/bootstrap.min.js',
                         dest: './app/assets/javascripts/bootstrap.min.js'
-                    }
+                    },
+                    {
+                        src: './app/js/home/cursorTab.js',
+                        dest: './app/assets/javascripts/cursorTab.min.js'
+                    },
                 ]
             }
 

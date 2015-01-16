@@ -5,7 +5,7 @@
 <%= render 'form' %>
 <% unless(@work_order.customer.id==nil) then %>
     <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal" id="testBtn" accesskey="l">
-      <%= t (".history") %>
+      <%= t ('.history') %>
     </button>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog customer_div">
@@ -16,10 +16,11 @@
           <div class="modal-body">
             <table class="table table-hover" id="tblGrid">
               <tr>
-                <td><%= t (".question") %></td>
-                <td><%= t (".answer") %></td>
-                <td><%= t (".note") %></td>
-                <td><%= t (".time") %></td>
+                <td><%= t ('.question') %></td>
+                <td><%= t ('.answer') %></td>
+                <td><%= t ('.note') %></td>
+                <td><%= t ('.username') %></td>
+                <td><%= t ('.time') %></td>
               </tr>
               <% @arrays.each do |array|%>
                   <tr>
@@ -34,7 +35,10 @@
                       <input type="text" value="<%= array.note %>">
                     </td>
                     <td>
-                      <input type="text" value="<%= array.created_at %>">
+                      <%= array.work_order.customer.name %>
+                    </td>
+                    <td>
+                      <%= array.created_at.strftime('%Y-%m-%d %H:%M') %>
                     </td>
                   </tr>
               <% end %>
@@ -42,7 +46,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">
-              <%= t (".close") %>
+              <%= t ('.close') %>
             </button>
           </div>
         </div>
@@ -50,17 +54,9 @@
     </div>
 <% end %>
 <script>
-
     $('#myModal').on('shown.bs.modal', function () {
         new tabTableInput("tblGrid","text");
     });
-
-  var initTabTable = function() {
-      console.log('excuting...');
-      setTimeout(function() {
-
-      }, 400)
-  }
 </script>
 
 

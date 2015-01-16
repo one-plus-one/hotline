@@ -39,6 +39,7 @@ zh-CN:
       close: "关闭"
       history: "历史问题"
       time: "时间"
+      username: "接线员"
 
   work_order:
       status: "状态"

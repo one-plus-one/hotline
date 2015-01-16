@@ -9,15 +9,15 @@ class WorkOrdersController < ApplicationController
 
   def new
     @work_order = WorkOrder.new
-    @work_order.customer_questions = [CustomerQuestion.new]
+    @work_order.customer_questions = [CustomerQuestion.new,CustomerQuestion.new]
     @work_order.customer = initialize_customer(@tel)
     #显示历史记录
     #通过电话号码取得customerID
     #通过customerID取得工单号
     #通过工单号取得问题(需要注意的问题就是一个工单原则上是可以有多条信息的)
     if @work_order.customer.id != nil
-      @customer = Customer.find_by_phone_num(@tel)
-      @history_work_orders = WorkOrder.where(customer_id: @customer.id).order(created_at: :desc)
+      # @customer = Customer.find_by_phone_num(@tel) 可以通过工单获取
+      @history_work_orders = WorkOrder.where(customer_id: @work_order.customer.id).order(created_at: :desc)
       @arrays = Array.new
       @history_work_orders.each do |history_work_order|
         history_questions = CustomerQuestion.where(work_order_id: history_work_order.id).order(created_at: :desc)
@@ -52,13 +52,12 @@ class WorkOrdersController < ApplicationController
   end
 
   def initialize_work_order(id)
-    workOrder=(id!=nil) ? WorkOrder.find(id) : WorkOrder.new
-    return workOrder
+    return workOrder = (id!=nil) ? WorkOrder.find(id) : WorkOrder.new
+    binding.pry
   end
 
   def initialize_customer_question(id)
-    question=(id==0) ? CustomerQuestion.new : CustomerQuestion.find(id)
-    return question
+    return question = (id==0) ? CustomerQuestion.new : CustomerQuestion.find(id)
   end
 
   def save_and_update
@@ -67,15 +66,14 @@ class WorkOrdersController < ApplicationController
     #创建工单
     workorder = initialize_work_order(params[:id])
     workorder.save(params[:work_order], customer, current_user)
-    # binding.pry
 
     # 创建问题表
     customer_questions = params[:work_order][:customer_questions_attributes]
-    if customer_questions != nil
       customer_questions.each do |question|
-        customer_question = initialize_customer_question(question[1][:id].to_i)
-        customer_question.save(question[1], workorder.id)
+        unless question[1][:title].blank?
+          customer_question = initialize_customer_question(question[1][:id].to_i)
+          customer_question.save(question[1], workorder.id)
+        end
       end
-    end
   end
 end

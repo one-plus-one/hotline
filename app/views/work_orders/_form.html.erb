@@ -11,7 +11,7 @@
               <%= c.label :age, t('customer.age') %>
               <%= c.text_field :age, :class => "form-control" %>
               <%= c.label :gender, t('customer.gender') %>
-              <%= select_tag "work_order[customer][gender]", options_for_select([ "男", "女"], @work_order.customer.gender), class: 'form-control'%>
+              <%= select_tag "work_order[customer][gender]", options_for_select(["男", "女"], @work_order.customer.gender), class: 'form-control' %>
             </div>
           </fieldset>
         </div>
@@ -25,11 +25,11 @@
               <%= c.label :occupation, t('customer.occupation') %>
               <%= c.text_field :occupation, :class => "form-control" %>
               <%= c.label :marital_status, t('customer.marital_status') %>
-              <%= c.text_field :marital_status, :class => "form-control" %>
+              <%= select_tag "work_order[customer][marital_status]", options_for_select([["未婚", false], ["已婚", true]], @work_order.customer.marital_status), class: 'form-control' %>
               <% if @work_order.customer.phone_num==nil %>
-                <%= c.hidden_field :phone_num, value: @tel%>
+                  <%= c.hidden_field :phone_num, value: @tel %>
               <% else %>
-                <%= c.hidden_field :phone_num %>
+                  <%= c.hidden_field :phone_num %>
               <% end %>
             </div>
           </fieldset>
@@ -42,7 +42,7 @@
               <%= c.label :address, t('customer.address') %>
               <%= c.text_field :address, autofocus: true, :class => "form-control", accesskey: "a" %>
               <%= c.label :address_type, t('customer.address_type') %>
-              <%= select_tag "work_order[customer][address_type]", options_for_select([ "城市", "农村"], @work_order.customer.address_type), class: 'form-control'%>
+              <%= select_tag "work_order[customer][address_type]", options_for_select(["城市", "农村"], @work_order.customer.address_type), class: 'form-control' %>
               <%= c.label :channel, t('customer.channel') %>
               <%= c.text_field :channel, :class => "form-control" %>
               <%= c.label :disability_degree, t('customer.disability_degree') %>
@@ -54,26 +54,27 @@
     <div class="right bottom">
       <fieldset>
         <legend>ALT+S</legend>
-        <div>
-          <% @work_order.customer_questions.each do |customer_question| %>
-              <%= f.fields_for :customer_questions, customer_question do |q| %>
-                  <%= q.label :title, t('customer_question.title') %>
-                  <%= q.text_field :title, :class => "form-control", accesskey: "s" %>
-                  <%= q.hidden_field :id, :class => "form-control" %>
-                  <%= q.label :answer, t('customer_question.answer') %>
-                  <%= q.text_field :answer, :class => "form-control" %>
-                  <%= q.label :note, t('customer_question.note') %>
-                  <%= q.text_field :note, :class => "form-control" %>
-              <% end %>
-              <hr >
-          <% end %>
-          <%= f.label :status, t('work_order.status') %>
-          <%= select_tag "work_order[status]", options_for_select([ "true", "false"], @work_order.status), class: 'form-control'%>
-        </div>
+        <div id="question_list" onkeyup="keyup()">
+            <% @work_order.customer_questions.each do |customer_question| %>
+              <div>
+                <%= f.fields_for :customer_questions, customer_question do |q| %>
+                    <%= q.label :title, t('customer_question.title') %>
+                    <%= q.text_field :title, :class => "form-control", accesskey: "s" %>
+                    <%= q.hidden_field :id, :class => "form-control" %>
+                    <%= q.label :answer, t('customer_question.answer') %>
+                    <%= q.text_field :answer, :class => "form-control" %>
+                    <%= q.label :note, t('customer_question.note') %>
+                    <%= q.text_field :note, :class => "form-control" %>
+                <% end %>
+                <hr>
+                </div>
+            <% end %>
+            </div>
+        <%= f.label :status, t('work_order.status') %>
+        <%= select_tag "work_order[status]", options_for_select(["true", "false"], @work_order.status), class: 'form-control' %>
       </fieldset>
     </div>
-
-
+    <label id="count" hidden="hidden"><%= @work_order.customer_questions.count%></label>
     <div class="right bottom">
       <fieldset>
       </fieldset>
@@ -85,3 +86,32 @@
     </div>
 
 <% end %>
+<script language="JavaScript">
+    var count=$("#count").html().to_i;
+    function keyup(obj) {
+        var e = window.event;
+        if (e.keyCode == 74) {
+            $("#question_list").append(add(5));
+        }
+    }
+    function add(index) {
+        return $("<div>").append(add_label(index,"title","问题")).
+                append(add_text(index,"title")).
+                append(add_label(index,"answer","答案")).
+                append(add_text(index, "answer")).
+                append(add_label(index,"note","备注")).
+                append(add_text(index,"note")).append(add_hr());
+    }
+    function add_text(index, title) {
+        return $("<input>").attr("type", "text").
+                attr("class", "form-control").
+                attr("id", "work_order_customer_questions_attributes_" + index + "_" + title).
+                attr("name", "work_order[customer_questions_attributes][" + index + "][" + title + "]");
+    }
+    function add_label(index, title, value) {
+        return $("<label>").attr("for", "work_order_customer_questions_attributes_" + index + "_" + title).html(value);
+    }
+    function add_hr() {
+        return $("<hr>")
+    }
+</script>

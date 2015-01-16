@@ -37,7 +37,8 @@ zh-CN:
       answer: "答案"
       note: "备注"
       close: "关闭"
-      history_question: "历史问题"
+      history: "历史问题"
+      time: "时间"
 
   work_order:
       status: "状态"

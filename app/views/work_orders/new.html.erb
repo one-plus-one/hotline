@@ -5,10 +5,10 @@
 <%= render 'form' %>
 <% unless(@work_order.customer.id==nil) then %>
     <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal" id="testBtn" accesskey="l">
-      <%= t (".history_question") %>
+      <%= t (".history") %>
     </button>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog customer_div">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel"><%= @arrays.count %></h4>
@@ -19,14 +19,12 @@
                 <td><%= t (".question") %></td>
                 <td><%= t (".answer") %></td>
                 <td><%= t (".note") %></td>
-                <td>提交时间</td>
+                <td><%= t (".time") %></td>
               </tr>
               <% @arrays.each do |array|%>
                   <tr>
                     <td>
-                      <!--<imput type="text" value=" <%= array.note %>" >-->
-                      <!--<%= array.title %>-->
-                      <input type="text" value="<%= array.note %>">
+                      <input type="text" value="<%= array.title %>">
                     </td>
                     <td>
                       <!--<%= text_area_tag(:message, array.answer, size: "40x3") %> 主要是解决问题太长-->
@@ -34,11 +32,9 @@
                     </td>
                     <td>
                       <input type="text" value="<%= array.note %>">
-                      <!--<%= array.note %>-->
                     </td>
                     <td>
                       <input type="text" value="<%= array.created_at %>">
-                      <!--<%= array.created_at %>-->
                     </td>
                   </tr>
               <% end %>

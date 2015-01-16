@@ -1,6 +1,7 @@
 class WorkOrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_phone_num, only: [:new]
+  before_action :save_and_update, only: [:create, :update]
 
   def index
     @work_orders = WorkOrder.where(:user_id => current_user.id)
@@ -66,7 +67,7 @@ class WorkOrdersController < ApplicationController
     #创建工单
     workorder = initialize_work_order(params[:id])
     workorder.save(params[:work_order], customer, current_user)
-
+    # binding.pry
 
     # 创建问题表
     customer_questions = params[:work_order][:customer_questions_attributes]

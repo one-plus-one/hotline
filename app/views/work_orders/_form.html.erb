@@ -11,8 +11,7 @@
               <%= c.label :age, t('customer.age') %>
               <%= c.text_field :age, :class => "form-control" %>
               <%= c.label :gender, t('customer.gender') %>
-              <%= c.text_field :gender, :class => "form-control" %>
-
+              <%= select_tag "work_order[customer][gender]", options_for_select([ "男", "女"], @work_order.customer.gender), class: 'form-control'%>
             </div>
           </fieldset>
         </div>
@@ -43,7 +42,7 @@
               <%= c.label :address, t('customer.address') %>
               <%= c.text_field :address, autofocus: true, :class => "form-control", accesskey: "a" %>
               <%= c.label :address_type, t('customer.address_type') %>
-              <%= c.text_field :address_type, :class => "form-control" %>
+              <%= select_tag "work_order[customer][address_type]", options_for_select([ "城市", "农村"], @work_order.customer.address_type), class: 'form-control'%>
               <%= c.label :channel, t('customer.channel') %>
               <%= c.text_field :channel, :class => "form-control" %>
               <%= c.label :disability_degree, t('customer.disability_degree') %>
@@ -68,9 +67,8 @@
               <% end %>
               <hr >
           <% end %>
-
           <%= f.label :status, t('work_order.status') %>
-          <%= f.text_field :status, :class => "form-control" %>
+          <%= select_tag "work_order[status]", options_for_select([ "true", "false"], @work_order.status), class: 'form-control'%>
         </div>
       </fieldset>
     </div>
@@ -84,7 +82,6 @@
     <div>
       <%= f.submit "提交", :class => "btn btn-danger" %>
       <%= f.hidden_field :id %>
-
     </div>
 
 <% end %>

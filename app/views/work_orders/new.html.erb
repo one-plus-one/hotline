@@ -11,34 +11,39 @@
       <div class="modal-dialog customer_div">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel"><%= @arrays.count %></h4>
+            <h4 class="modal-title" id="myModalLabel">
+              <a href="#" ><%=@arrays.count%>个问题</a>
+            </h4>
           </div>
           <div class="modal-body">
             <table class="table table-hover" id="tblGrid">
-              <tr>
-                <td><%= t ('.question') %></td>
-                <td><%= t ('.answer') %></td>
-                <td><%= t ('.note') %></td>
-                <td><%= t ('.username') %></td>
-                <td><%= t ('.time') %></td>
-              </tr>
+              <!--<tr>-->
+                <!--<td><%= t ('.question') %></td>-->
+                <!--<td><%= t ('.answer') %></td>-->
+                <!--<td><%= t ('.note') %></td>-->
+                <!--<td><%= t ('.username') %></td>-->
+                <!--<td><%= t ('.time') %></td>-->
+              <!--</tr>-->
               <% @arrays.each do |array|%>
                   <tr>
                     <td>
-                      <input type="text" value="<%= array.title %>">
+                      <%= link_to t('.question')+array.title %>
+                      <!--<a href="#" aria-label="问题"><%= array.title %></a>-->
                     </td>
                     <td>
-                      <!--<%= text_area_tag(:message, array.answer, size: "40x3") %> 主要是解决问题太长-->
-                      <input type="text" value="<%= array.answer %>">
+                      <div class="customerWidth">
+                      <%= link_to t('.answer')+array.answer, "##" %>
+                      <!--<%= text_field_tag 'answer', array.answer %>-->
+                      </div>
                     </td>
                     <td>
-                      <input type="text" value="<%= array.note %>">
+                      <%= link_to t('.note')+array.note  %>
                     </td>
                     <td>
-                      <%= array.work_order.customer.name %>
+                      <%= link_to t('.username')+array.work_order.customer.name %>
                     </td>
                     <td>
-                      <%= array.created_at.strftime('%Y-%m-%d %H:%M') %>
+                      <%= link_to t('.time')+array.created_at.strftime('%Y-%m-%d %H:%M') %>
                     </td>
                   </tr>
               <% end %>

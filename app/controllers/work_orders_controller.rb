@@ -52,12 +52,11 @@ class WorkOrdersController < ApplicationController
   end
 
   def initialize_work_order(id)
-    return workOrder = (id!=nil) ? WorkOrder.find(id) : WorkOrder.new
-    binding.pry
+    return id != nil ? WorkOrder.find(id) : WorkOrder.new
   end
 
   def initialize_customer_question(id)
-    return question = (id==0) ? CustomerQuestion.new : CustomerQuestion.find(id)
+    return id==0 ? CustomerQuestion.new : CustomerQuestion.find(id)
   end
 
   def save_and_update

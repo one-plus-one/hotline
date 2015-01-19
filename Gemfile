@@ -30,6 +30,7 @@ group :test do
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'simplecov'
+  gem 'factory_girl_rails'
 end
 
 # bundle exec rake doc:rails generates the API under doc/api.

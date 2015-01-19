@@ -68,10 +68,12 @@ class WorkOrdersController < ApplicationController
 
     # 创建问题表
     customer_questions = params[:work_order][:customer_questions_attributes]
-      customer_questions.each do |question|
-        unless question[1][:title].blank?
-          customer_question = initialize_customer_question(question[1][:id].to_i)
-          customer_question.save(question[1], workorder.id)
+      if customer_questions!=nil
+        customer_questions.each do |question|
+          unless question[1][:title].blank?
+            customer_question = initialize_customer_question(question[1][:id].to_i)
+            customer_question.save(question[1], workorder.id)
+          end
         end
       end
   end

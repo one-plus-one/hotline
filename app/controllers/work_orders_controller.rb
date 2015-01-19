@@ -9,7 +9,7 @@ class WorkOrdersController < ApplicationController
 
   def new
     @work_order = WorkOrder.new
-    @work_order.customer_questions = [CustomerQuestion.new,CustomerQuestion.new]
+    @work_order.customer_questions = [CustomerQuestion.new]
     @work_order.customer = initialize_customer(@tel)
     #显示历史记录
     #通过电话号码取得customerID

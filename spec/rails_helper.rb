@@ -7,6 +7,7 @@ require 'simplecov'
 require 'support/controller_helper'
 SimpleCov.start do
   add_filter "/spec/"
+  add_filter "/db/"
 end
 # Add additional requires below this line. Rails is not loaded until this point!
 

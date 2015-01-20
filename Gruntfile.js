@@ -7,16 +7,6 @@ module.exports = function(grunt){
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            //build: {
-            //    //src: 'src/<%=pkg.name %>.js',
-            //    src: './app/js/home/main.js',
-            //    //dest: 'build/<%= pkg.name %>.min.js'
-            //    dest: './app/assets/javascripts/home.min.js'
-            //},
-            //build: {
-            //    src: './bower_components/boostrap/dist/js/bootstrap.min.js',
-            //    dest: './app/assets/javascripts/home.min.js'
-            //}
             static_mappings:{
                 files:[
                     {
@@ -26,11 +16,7 @@ module.exports = function(grunt){
                     {
                         src: './bower_components/bootstrap/dist/js/bootstrap.min.js',
                         dest: './app/assets/javascripts/bootstrap.min.js'
-                    },
-                    {
-                        src: './app/js/home/work_order_index.js',
-                        dest: './app/assets/javascripts/work_order_index.min.js'
-                    },
+                    }
                 ]
             }
 

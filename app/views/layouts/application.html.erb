@@ -7,8 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+    <div id="my_log"></div>
+    <% if current_user != nil %>
+    <button type="button" class="btn btn-default" onclick="setready()">就绪</button>
+    <button type="button" class="btn btn-default" disabled="true">应答</button>
+    <button type="button" class="btn btn-default" onclick="offhook()" disabled="true">挂机</button>
+    <button type="button" class="btn btn-default" onclick="setbusy()">小休</button>
+    <% end %>
 <%= yield %>
 
 </body>
+
+<script>
+    $('#main').ready(function() {
+                <% if current_user != nil %>
+                ws_connect();
+                login();
+                <%end %>
+            }
+    );
+</script>
 </html>

@@ -1,9 +1,11 @@
 function ws_connect() {
     if ("WebSocket" in window) {
-        var ws = new WebSocket("ws://localhost:8080/echo");
-        ws.onopen = function (event) {
-            log.innerHTML +=
-                "<div class='green'>websocket connected</div>";
+        if(ws!=null){
+            var ws = new WebSocket("ws://localhost:8080/echo");
+            ws.onopen = function (event) {
+                log.innerHTML +=
+                    "<div class='green'>websocket connected</div>";
+        }
             //connect.style.display = 'none';
             //tools.style.display = 'block';
         };
@@ -22,6 +24,7 @@ function ws_connect() {
             if (status == 'ringing') {
                 location.href = 'oncall/' + ani;
             }
+            my_log.innerHTML = status;
         };
 
         ws.onclose = function (event) {

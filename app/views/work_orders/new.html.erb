@@ -11,39 +11,30 @@
       <div class="modal-dialog customer_div">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">
-              <a href="#" ><%=@arrays.count%>个问题</a>
+            <h4 class="modal-title">
+              <a href="#"><%= @arrays.count %>个问题</a>
             </h4>
           </div>
           <div class="modal-body">
-            <table class="table table-hover" id="tblGrid">
-              <!--<tr>-->
-                <!--<td><%= t ('.question') %></td>-->
-                <!--<td><%= t ('.answer') %></td>-->
-                <!--<td><%= t ('.note') %></td>-->
-                <!--<td><%= t ('.username') %></td>-->
-                <!--<td><%= t ('.time') %></td>-->
-              <!--</tr>-->
-              <% @arrays.each do |array|%>
+            <table class="table table-hover" onkeyup="keystoke()">
+              <% @arrays.each_with_index do |array,index| %>
                   <tr>
                     <td>
-                      <%= link_to t('.question')+array.title %>
-                      <!--<a href="#" aria-label="问题"><%= array.title %></a>-->
+                      <%= link_to t('.question')+array.title, "", id: '1:'+index.to_s %>
                     </td>
                     <td>
                       <div class="customerWidth">
-                      <%= link_to t('.answer')+array.answer, "##" %>
-                      <!--<%= text_field_tag 'answer', array.answer %>-->
+                        <%= link_to t('.answer')+array.answer,"", id: '2:'+index.to_s %>
                       </div>
                     </td>
                     <td>
-                      <%= link_to t('.note')+array.note  %>
+                      <%= link_to t('.note')+array.note, "", id: '3:'+index.to_s %>
                     </td>
                     <td>
-                      <%= link_to t('.username')+array.work_order.customer.name %>
+                      <%= link_to t('.username')+array.work_order.customer.name,"", id: '4:'+index.to_s %>
                     </td>
                     <td>
-                      <%= link_to t('.time')+array.created_at.strftime('%Y-%m-%d %H:%M') %>
+                      <%= link_to t('.time')+array.created_at.strftime('%Y-%m-%d %H:%M'),"",id: '5:'+index.to_s %>
                     </td>
                   </tr>
               <% end %>
@@ -58,11 +49,6 @@
       </div>
     </div>
 <% end %>
-<script>
-    $('#myModal').on('shown.bs.modal', function () {
-        new tabTableInput("tblGrid","text");
-    });
-</script>
 
 
 

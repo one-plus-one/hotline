@@ -4,7 +4,12 @@ class WorkOrdersController < ApplicationController
   before_action :save_and_update, only: [:create, :update]
 
   def index
-    @work_orders = WorkOrder.where(:user_id => current_user.id)
+    binding.pry
+    if can? :manage
+      @work_orders = WorkOrder.all
+    else
+      @work_orders = WorkOrder.where(:user_id => current_user.id)
+    end
   end
 
   def new

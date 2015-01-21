@@ -2,25 +2,27 @@
 <div id="log"></div>
 
 <%= current_user.username %>
-<%= link_to '退出登录', destroy_user_session_path, :method => :delete, :class => "btn btn-link"%></br>
-<%= link_to '我的工单', work_orders_path %>
-<%= link_to '拨号'%>
-<%= link_to '应答'%>
-<%= link_to '挂断'%>
-<%= link_to '小休'%>
-<%= link_to '就绪'%>
-<%= link_to '保持'%>
-<%= link_to '取消保持'%></br>
-<%= link_to '一键转移'%>
-<%= link_to '拨第三方'%>
-<%= link_to '切换通话'%>
-<%= link_to '挂断第三方'%></br>
-<%= link_to '协商转移'%>
-<%= link_to '三方会议'%>
-<%= link_to '查询坐席状态'%>
+<%= link_to '退出登录', destroy_user_session_path, :method => :delete, :class => "btn btn-link" %></br>
 <% if user_signed_in? %>
-    <p>The user is loged in.</p>
     <% if can? :manage, :Home %>
-        <%= link_to "About"%>
+        <%= link_to '所有工单', work_orders_path %>
+    <% else %>
+        <%= link_to '我的工单', work_orders_path %>
     <% end %>
 <% end %>
+
+<%= link_to '拨号' %>
+<%= link_to '应答' %>
+<%= link_to '挂断' %>
+<%= link_to '小休' %>
+<%= link_to '就绪' %>
+<%= link_to '保持' %>
+<%= link_to '取消保持' %></br>
+<%= link_to '一键转移' %>
+<%= link_to '拨第三方' %>
+<%= link_to '切换通话' %>
+<%= link_to '挂断第三方' %></br>
+<%= link_to '协商转移' %>
+<%= link_to '三方会议' %>
+<%= link_to '查询坐席状态' %>
+

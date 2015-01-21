@@ -13,6 +13,8 @@
     <button type="button" class="btn btn-default" disabled="true">应答</button>
     <button type="button" class="btn btn-default" onclick="offhook()" disabled="true">挂机</button>
     <button type="button" class="btn btn-default" onclick="setbusy()">小休</button>
+    <%=current_user.username %>
+    <%= link_to '退出登录', destroy_user_session_path, :method => :delete, :class => "btn btn-default" %></br>
     <% end %>
 <%= yield %>
 

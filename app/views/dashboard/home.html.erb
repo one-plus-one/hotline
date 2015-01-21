@@ -1,8 +1,7 @@
 <div id="main"></div>
 <div id="log"></div>
 
-<%= current_user.username %>
-<%= link_to '退出登录', destroy_user_session_path, :method => :delete, :class => "btn btn-link" %></br>
+
 <% if user_signed_in? %>
     <% if can? :read, :all %>
         <%= link_to '所有工单', work_orders_path %>

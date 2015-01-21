@@ -50,6 +50,10 @@
     </div>
 <% end %>
 <script>
+    $('#top-header').ready(function(){
+        offhook();
+    });
+
     $('#myModal').on('shown.bs.modal', function () {
       $('#link_history_count').focus()
     });

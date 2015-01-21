@@ -1,4 +1,4 @@
-function ws_connect() {
+var ws_connect = function() {
     var btnParking = document.getElementById("btnParking");
     var btnWaiting = document.getElementById("btnWaiting");
     var btnOnhook = document.getElementById("btnOnhook");
@@ -7,10 +7,7 @@ function ws_connect() {
     if ("WebSocket" in window) {
         ws = new WebSocket("ws://localhost:8080/echo");
         ws.onopen = function (event) {
-            //log.innerHTML +=
-            //    "<div class='green'>websocket connected</div>";
-            //connect.style.display = 'none';
-            //tools.style.display = 'block';
+
         };
 
         ws.onerror = function (event) {
@@ -55,13 +52,13 @@ function ws_connect() {
     return false;
 };
 
-function ws_disconnect() {
+var ws_disconnect = function() {
     ws.close();
 
     return false;
 }
 
-function ws_send_data() {
+var ws_send_data = function() {
     //log.innerHTML +=
     //    "<div>send message:<span class='data'>" + val.value + "</span></div>";
     ws.send(val.value);
@@ -69,10 +66,10 @@ function ws_send_data() {
     return false;
 }
 
-function login() {
+var login = function () {
     location.href = "wisexclient:login?agentid=1109&passwd=Hanwin@20!4&name=Johnson";
 }
-function dial() {
+var dial = function()  {
     location.href = "wisexclient:dial?ani=31119104&dnis=718930430189";
 }
 
@@ -80,10 +77,14 @@ function onhook() {
     location.href = "wisexclient:onhook";
 }
 
-function offhook(tel) {
-    location.href = "wisexclient:offhook";
+var answer = function (tel) {
     location.href = "/answer/" + tel;
 }
+
+var offhook = function() {
+
+    location.href = "wisexclient:offhook"
+};
 
 function setbusy() {
     location.href = "wisexclient:park";
@@ -130,7 +131,7 @@ function logout() {
 }
 
 function getagentstatus() {
-    location.href = "wisexclient:getagentstatus";
+    location.href = "wisexclient: getagentstatus";
 }
 
 

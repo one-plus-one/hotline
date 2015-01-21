@@ -9,7 +9,7 @@
     <th><%= t(".customer_name") %></th>
   </tr>
   </thead>
-  <% @work_orders.each_with_index do |work_order, index| %>
+  <% @work_orders.each do |work_order| %>
       <tr>
         <td><%= link_to work_order.created_at, edit_work_order_path(work_order) %></td>
         <td>
@@ -20,9 +20,9 @@
           <% end %>
         </td>
         <% if can? :read, :all %>
-            <td><%= link_to User.find(work_order.user_id).username, edit_work_order_path(work_order) %></td>
+            <td><%= link_to work_order.user.username, edit_work_order_path(work_order) %></td>
         <% end %>
-        <td><%= link_to Customer.find(work_order.customer_id).name, edit_work_order_path(work_order) %></td>
+        <td><%= link_to work_order.customer.name, edit_work_order_path(work_order) %></td>
       </tr>
   <% end %>
 </table>

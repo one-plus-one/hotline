@@ -3,20 +3,26 @@
   <tr>
     <th><%= t(".create_time") %></th>
     <th><%= t(".status") %></th>
+    <% if can? :read, :all %>
+        <th><%= t(".user_name") %></th>
+    <% end %>
     <th><%= t(".customer_name") %></th>
   </tr>
   </thead>
   <% @work_orders.each_with_index do |work_order, index| %>
       <tr>
-        <td><%= link_to work_order.created_at, edit_work_order_path(work_order), id: '1:'+index.to_s %></td>
+        <td><%= link_to work_order.created_at, edit_work_order_path(work_order) %></td>
         <td>
           <% if work_order.status== 'true' %>
-              <%= link_to t(".solved"), edit_work_order_path(work_order), id: '2:'+index.to_s %>
+              <%= link_to t(".solved"), edit_work_order_path(work_order) %>
           <% else %>
-              <%= link_to t(".unsolved"), edit_work_order_path(work_order), id: '2:'+index.to_s %>
+              <%= link_to t(".unsolved"), edit_work_order_path(work_order) %>
           <% end %>
         </td>
-        <td><%= link_to Customer.find(work_order.customer_id).name, edit_work_order_path(work_order), id: '3:'+index.to_s %></td>
+        <% if can? :read, :all %>
+            <td><%= link_to User.find(work_order.user_id).username, edit_work_order_path(work_order) %></td>
+        <% end %>
+        <td><%= link_to Customer.find(work_order.customer_id).name, edit_work_order_path(work_order) %></td>
       </tr>
   <% end %>
 </table>

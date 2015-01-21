@@ -4,7 +4,7 @@
 <%= current_user.username %>
 <%= link_to '退出登录', destroy_user_session_path, :method => :delete, :class => "btn btn-link" %></br>
 <% if user_signed_in? %>
-    <% if can? :manage, :Home %>
+    <% if can? :read, :all %>
         <%= link_to '所有工单', work_orders_path %>
     <% else %>
         <%= link_to '我的工单', work_orders_path %>

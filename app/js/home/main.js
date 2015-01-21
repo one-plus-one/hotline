@@ -1,11 +1,14 @@
 function ws_connect() {
+    var btnParking = document.getElementById("btnParking");
+    var btnWaiting = document.getElementById("btnWaiting");
+    var btnOnhook = document.getElementById("btnOnhook");
+    var btnOffhook = document.getElementById("btnOffhook");
+
     if ("WebSocket" in window) {
-        if(ws!=null){
-            var ws = new WebSocket("ws://localhost:8080/echo");
-            ws.onopen = function (event) {
-                log.innerHTML +=
-                    "<div class='green'>websocket connected</div>";
-        }
+        ws = new WebSocket("ws://localhost:8080/echo");
+        ws.onopen = function (event) {
+            //log.innerHTML +=
+            //    "<div class='green'>websocket connected</div>";
             //connect.style.display = 'none';
             //tools.style.display = 'block';
         };
@@ -16,15 +19,26 @@ function ws_connect() {
         };
 
         ws.onmessage = function (event) {
-            log.innerHTML +=
-                "<div>get message:<span class='data'>" + event.data + "</span></div>";
+            //log.innerHTML +=
+            //    "<div>get message:<span class='data'>" + event.data + "</span></div>";
             var data = event.data.split(",");
             var ani = data[6].split(":")[1];
             var status = data[3].split(":")[1];
             if (status == 'ringing') {
                 location.href = 'oncall/' + ani;
             }
-            my_log.innerHTML = status;
+            else if (status == 'parking'){
+                btnParking.disabled = true;   //不能编辑
+                btnWaiting.disabled = false;
+            }
+            else if (status == 'waiting'){
+                btnWaiting.disabled = true;
+                btnParking.disabled = false;
+            }
+            else if (status == 'offhook'){
+                btnWaiting.disabled = true;
+                btnParking.disabled = true;
+            }
         };
 
         ws.onclose = function (event) {
@@ -48,8 +62,8 @@ function ws_disconnect() {
 }
 
 function ws_send_data() {
-    log.innerHTML +=
-        "<div>send message:<span class='data'>" + val.value + "</span></div>";
+    //log.innerHTML +=
+    //    "<div>send message:<span class='data'>" + val.value + "</span></div>";
     ws.send(val.value);
 
     return false;
@@ -62,12 +76,12 @@ function dial() {
     location.href = "wisexclient:dial?ani=31119104&dnis=718930430189";
 }
 
-function offhook() {
-    location.href = "wisexclient:offhook";
+function onhook() {
+    location.href = "wisexclient:onhook";
 }
 
-function onhook(tel) {
-    location.href = "wisexclient:onhook";
+function offhook(tel) {
+    location.href = "wisexclient:offhook";
     location.href = "/answer/" + tel;
 }
 
@@ -118,3 +132,18 @@ function logout() {
 function getagentstatus() {
     location.href = "wisexclient:getagentstatus";
 }
+
+
+/*
+ 改变状态的逻辑测试
+ // */
+//function changeState(btn){
+//    var btns = [btnParking,btnWaiting,btnOnhook];
+//    forEach(tmpBtn in btns){
+//        if(btn!=tmpBtn){
+//            tmpBtn.disabled = false
+//        }else{
+//            tmpBtn.disabled = true
+//        }
+//    }
+//}

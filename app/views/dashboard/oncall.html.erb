@@ -1,4 +1,12 @@
 <%= content_for(:title, @tel+"来电") %>
 <h1><%= label(@tel, @tel) %>来电<br/></h1>
 <button onclick="offhook();" class="btn btn-default">拒接来电</button>
-<button autofocus="autofocus" onclick="onhook(<%= @tel %>);" class="btn btn-primary">接电话</button>
+<button autofocus="autofocus" onclick="offhook(<%= @tel %>);" class="btn btn-primary">接电话</button>
+
+
+<script>
+    btnParking.disabled = true;
+    btnWaiting.disabled = true;
+    btnOnhook.disabled = true;
+    btnOffhook.disabled = false;
+</script>

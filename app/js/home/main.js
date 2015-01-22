@@ -16,8 +16,6 @@ function ws_connect() {
         };
 
         ws.onmessage = function (event) {
-            //log.innerHTML +=
-            //    "<div>get message:<span class='data'>" + event.data + "</span></div>";
             var data = event.data.split(",");
             var ani = data[6].split(":")[1];
             var status = data[3].split(":")[1];
@@ -37,12 +35,7 @@ function ws_connect() {
                 btnParking.disabled = true;
             }
         };
-
         ws.onclose = function (event) {
-            //log.innerHTML +=
-            //    "<div class='red'>websocket closed</div>";
-            ////connect.style.display = 'block';
-            //tools.style.display = 'none';
         };
     } else {
         // the browser doesn't support WebSocket
@@ -59,10 +52,7 @@ function ws_disconnect() {
 }
 
 function ws_send_data() {
-    //log.innerHTML +=
-    //    "<div>send message:<span class='data'>" + val.value + "</span></div>";
     ws.send(val.value);
-
     return false;
 }
 
@@ -89,7 +79,6 @@ function setbusy() {
     location.href = "wisexclient:park";
     btnParking.disabled=true;
     btnWaiting.disabled=false;
-
 }
 
 function setready() {
@@ -137,18 +126,3 @@ function logout() {
 function getagentstatus() {
     location.href = "wisexclient:getagentstatus";
 }
-
-
-/*
- 改变状态的逻辑测试
- // */
-//function changeState(btn){
-//    var btns = [btnParking,btnWaiting,btnOnhook];
-//    forEach(tmpBtn in btns){
-//        if(btn!=tmpBtn){
-//            tmpBtn.disabled = false
-//        }else{
-//            tmpBtn.disabled = true
-//        }
-//    }
-//}

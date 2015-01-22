@@ -6,7 +6,6 @@ RSpec.describe DashboardController do
     sign_in
   end
 
-<<<<<<< Updated upstream
   describe 'dashboard' do
 
     it 'should render home page' do
@@ -17,12 +16,13 @@ RSpec.describe DashboardController do
     it 'should response to oncall page with phone number' do
       get :oncall, :tel => '21310990'
       expect(assigns(:tel)).to eq('21310990')
-=======
+    end
+  end
+
   describe 'home page' do
     it 'response to oncall page with phone number' do
       get :oncall, :tel => '123'
       expect(assigns(:tel)).to eq('123')
->>>>>>> Stashed changes
     end
 
     it 'should redirect to new work order page with phone number' do

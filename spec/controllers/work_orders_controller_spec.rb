@@ -52,7 +52,6 @@ RSpec.describe WorkOrdersController do
 
   end
 
-<<<<<<< Updated upstream
   describe 'GET new' do
 
     it "should initialize a new workorder for a new customer" do
@@ -110,13 +109,6 @@ RSpec.describe WorkOrdersController do
                       }
                   }}
       expect(response).to redirect_to(work_orders_path)
-=======
-  describe 'GET index' do
-    it 'should initialize customer for an new work_order' do
-      @work_orders = WorkOrder.where(:user_id => 1)
-      get :index, {}, valid_session
-      expect(assigns(:work_orders)).to be_a_new(@work_orders)
->>>>>>> Stashed changes
+    end
     end
   end
-end

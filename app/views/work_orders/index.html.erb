@@ -24,7 +24,7 @@
   </thead>
   <% @work_orders.each do |work_order| %>
       <tr>
-        <td><%= link_to work_order.created_at, edit_work_order_path(work_order) %></td>
+        <td><%= link_to work_order.created_at.strftime('%Y-%m-%d %H:%M:%S'), edit_work_order_path(work_order) %></td>
         <td>
           <% if work_order.status== 'true' %>
               <%= link_to t(".solved"), edit_work_order_path(work_order) %>

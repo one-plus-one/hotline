@@ -10,6 +10,32 @@ RSpec.describe WorkOrdersController do
       get :index
       expect(assigns(:work_orders)).not_to eql(nil)
     end
+
+    it "should get correct workorders for solved condition" do
+      get :index, :commit => "已解决"
+      expect(assigns(:work_orders)).not_to eql(nil)
+    end
+
+    it "should get correct workorders for unsolved condition" do
+      get :index, :commit => "未解决"
+      expect(assigns(:work_orders)).not_to eql(nil)
+    end
+
+    it "should get correct workorders for oneweek condition" do
+      get :index, :commit => "一周"
+      expect(assigns(:work_orders)).not_to eql(nil)
+    end
+
+    it "should get correct workorders for onemonth condition" do
+      get :index, :commit => "一月"
+      expect(assigns(:work_orders)).not_to eql(nil)
+    end
+
+    it "should get correct workorders for latest condition" do
+      get :index, :commit => "三天"
+      expect(assigns(:work_orders)).not_to eql(nil)
+    end
+
   end
 
   describe 'GET new' do

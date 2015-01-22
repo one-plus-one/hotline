@@ -23,8 +23,10 @@
 <script>
     $('#main').ready(function() {
                 <% if current_user != nil %>
-                ws_connect();
-                login();
+                    ws_connect();
+                    login();
+                <% else %>
+                    logout();
                 <%end %>
             }
     );

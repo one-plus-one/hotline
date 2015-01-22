@@ -7,8 +7,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
-      if User.count == 1
+      binding.pry
+      if resource.id == 1
+        resource.add_role 'system'
+        binding.pry
+      elsif resource.id==2
         resource.add_role 'admin'
+      else
+        resource.add_role 'guest'
       end
       resource
     end

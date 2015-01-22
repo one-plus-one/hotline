@@ -77,10 +77,13 @@ function onhook() {
     location.href = "wisexclient:onhook";
 }
 
-function offhook(tel) {
-    location.href = "wisexclient:offhook";
+var answer = function (tel) {
     location.href = "/answer/" + tel;
 }
+
+var offhook = function() {
+    location.href = "wisexclient:offhook"
+};
 
 function setbusy() {
     location.href = "wisexclient:park";

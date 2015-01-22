@@ -87,10 +87,15 @@ var offhook = function() {
 
 function setbusy() {
     location.href = "wisexclient:park";
+    btnParking.disabled=true;
+    btnWaiting.disabled=false;
+
 }
 
 function setready() {
     location.href = "wisexclient:setready";
+    btnParking.disabled=false;
+    btnWaiting.disabled=true;
 }
 
 function hold() {

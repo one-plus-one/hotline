@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe WorkOrdersController do
+
+  let(:valid_attributes) {
+    skip("Add a hash of attributes valid for your model")
+  }
+
+  let(:invalid_attributes) {
+    skip("Add a hash of attributes invalid for your model")
+  }
+
+  # This should return the minimal set of values that should be in the session
+  # in order to pass any filters (e.g. authentication) defined in
+  # UsersController. Be sure to keep this updated too.
+  let(:valid_session) { {} }
+
   before do
     sign_in
   end
@@ -38,6 +52,7 @@ RSpec.describe WorkOrdersController do
 
   end
 
+<<<<<<< Updated upstream
   describe 'GET new' do
 
     it "should initialize a new workorder for a new customer" do
@@ -95,6 +110,13 @@ RSpec.describe WorkOrdersController do
                       }
                   }}
       expect(response).to redirect_to(work_orders_path)
+=======
+  describe 'GET index' do
+    it 'should initialize customer for an new work_order' do
+      @work_orders = WorkOrder.where(:user_id => 1)
+      get :index, {}, valid_session
+      expect(assigns(:work_orders)).to be_a_new(@work_orders)
+>>>>>>> Stashed changes
     end
   end
 end

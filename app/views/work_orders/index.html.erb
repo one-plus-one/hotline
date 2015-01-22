@@ -1,3 +1,10 @@
+<a href="#" id="work_orders_count"><%= @work_orders.count %>个工单</a>
+<%= form_tag("/work_orders",method: "get") do %>
+    <%= submit_tag("所有工单") %>
+    <%= submit_tag("已解决") %>
+    <%= submit_tag("未解决") %>
+    <%= submit_tag("一周") %>
+<% end %>
 <table class="table table-hover">
   <thead>
   <tr>
@@ -26,3 +33,7 @@
       </tr>
   <% end %>
 </table>
+
+<script>
+  $('#work_orders_count').focus();
+</script>

@@ -9,6 +9,14 @@ class WorkOrdersController < ApplicationController
     else
       @work_orders = WorkOrder.where(:user_id => current_user.id)
     end
+    if params[:commit] == "已解决"
+      @work_orders = @work_orders.where(:status => "true")
+    elsif params[:commit] == "未解决"
+      @work_orders = @work_orders.where(:status => "false")
+    elsif params[:commit] == "一周"
+      @work_orders = @work_orders.where("created_at >= ?", 1.week.ago)
+    else
+    end
   end
 
   def new

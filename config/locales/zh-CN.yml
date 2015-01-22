@@ -33,6 +33,12 @@ zh-CN:
       status: "工单状态"
       customer_name: "客户名称"
       user_name: "工单创建人"
+      all_work_orders: "所有工单"
+      solved: "已解决"
+      unsolved: "未解决"
+      month: "一月"
+      week: "一周"
+      three_days: "三天"
     new:
       question: "问题"
       answer: "答案"

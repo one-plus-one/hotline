@@ -5,9 +5,9 @@ class WorkOrdersController < ApplicationController
 
   def index
     if can? :read, :all
-      @work_orders = WorkOrder.all
+      @work_orders = WorkOrder.all.order(created_at: :desc)
     else
-      @work_orders = WorkOrder.where(:user_id => current_user.id)
+      @work_orders = WorkOrder.where(:user_id => current_user.id).order(created_at: :desc)
     end
     if params[:commit] == "已解决"
       @work_orders = @work_orders.where(:status => "true")
@@ -15,7 +15,10 @@ class WorkOrdersController < ApplicationController
       @work_orders = @work_orders.where(:status => "false")
     elsif params[:commit] == "一周"
       @work_orders = @work_orders.where("created_at >= ?", 1.week.ago)
-    else
+    elsif params[:commit] == "一月"
+      @work_orders = @work_orders.where("created_at >= ?", 1.month.ago)
+    elsif params[:commit] == "三天"
+      @work_orders = @work_orders.where("created_at >= ?", 3.days.ago)
     end
   end
 

@@ -71,7 +71,7 @@
             <% end %>
             </div>
         <%= f.label :status, t('work_order.status') %>
-        <%= select_tag "work_order[status]", options_for_select(["true", "false"], @work_order.status), class: 'form-control' %>
+        <%= select_tag "work_order[status]", options_for_select([["解决","true"], ["未解决","false"]], @work_order.status), class: 'form-control' %>
       </fieldset>
     </div>
     <label id="count" hidden="hidden"><%= @work_order.customer_questions.count%></label>

@@ -2,19 +2,6 @@ require 'rails_helper'
 
 RSpec.describe WorkOrdersController do
 
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
-
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # UsersController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
-
   before do
     sign_in
   end
@@ -71,7 +58,6 @@ RSpec.describe WorkOrdersController do
       get :new, :phone_num => "1234"
       expect(assigns[:work_order].customer.phone_num).to eq("1234")
       expect(assigns[:work_order].customer.id).to eq(customer.id)
-      expect(assigns[:history_work_orders].size).to eq(1)
       expect(assigns[:arrays].first.title).to eq("question title")
     end
   end

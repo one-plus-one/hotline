@@ -20,7 +20,9 @@
               <% @arrays.each_with_index do |array,index| %>
                   <tr>
                     <td>
-                      <%= link_to t('.question')+array.title, "", id: '1:'+index.to_s %>
+                      <div class="customerWidth">
+                        <%= link_to t('.question')+array.title, "", id: '1:'+index.to_s %>
+                      </div>
                     </td>
                     <td>
                       <div class="customerWidth">

@@ -1,4 +1,5 @@
-<a href="#" id="work_orders_count"><%= @work_orders.count %>个工单</a>
+<a href="#" id="work_orders_count">工单数量:</a>
+<a href="#"><%= @work_orders.count %>个工单</a>
 <%= form_tag("/work_orders",method: "get") do %>
     <% if can? :read, :all%>
 

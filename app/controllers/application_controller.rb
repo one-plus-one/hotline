@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(User)
       if resource.id == 1
         resource.add_role 'system'
-        binding.pry
       elsif resource.id==2
         resource.add_role 'admin'
       else

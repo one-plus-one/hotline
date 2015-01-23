@@ -20,6 +20,8 @@ RSpec.describe WorkOrdersController do
   end
 
   describe 'GET index' do
+    work_order_one = FactoryGirl.create :work_order
+    work_order_two = FactoryGirl.create :work_order, :status => "false"
     it "should get all workorders for current user" do
       get :index
       expect(assigns(:work_orders)).not_to eql(nil)
@@ -27,27 +29,27 @@ RSpec.describe WorkOrdersController do
 
     it "should get correct workorders for solved condition" do
       get :index, :commit => "已解决"
-      expect(assigns(:work_orders)).not_to eql(nil)
+      expect(assigns(:work_orders).size).to be > 0
     end
 
     it "should get correct workorders for unsolved condition" do
       get :index, :commit => "未解决"
-      expect(assigns(:work_orders)).not_to eql(nil)
+      expect(assigns(:work_orders).size).to be > 0
     end
 
     it "should get correct workorders for oneweek condition" do
       get :index, :commit => "一周"
-      expect(assigns(:work_orders)).not_to eql(nil)
+      expect(assigns(:work_orders).size).to be > 0
     end
 
     it "should get correct workorders for onemonth condition" do
       get :index, :commit => "一月"
-      expect(assigns(:work_orders)).not_to eql(nil)
+      expect(assigns(:work_orders).size).to be > 0
     end
 
     it "should get correct workorders for latest condition" do
       get :index, :commit => "三天"
-      expect(assigns(:work_orders)).not_to eql(nil)
+      expect(assigns(:work_orders).size).to be > 0
     end
 
   end

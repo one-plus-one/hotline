@@ -28,7 +28,7 @@
   </thead>
   <% @work_orders.each do |work_order| %>
       <tr>
-        <td><%= link_to work_order.created_at.in_time_zone("Beijing").strftime('%Y-%m-%d %H:%M:%S'), edit_work_order_path(work_order) %></td>
+        <td><%= link_to work_order.created_at.strftime('%Y-%m-%d %H:%M:%S'), edit_work_order_path(work_order) %></td>
         <td>
           <% if work_order.status== 'true' %>
               <%= link_to t(".solved"), edit_work_order_path(work_order) %>
@@ -40,7 +40,7 @@
             <td><%= link_to work_order.user.username, edit_work_order_path(work_order) %></td>
         <% end %>
         <td><%= link_to User.find(work_order.updated_user_id==nil ? work_order.user.id : work_order.updated_user_id).username, edit_work_order_path(work_order) %></td>
-        <td><%= link_to work_order.updated_at.in_time_zone("Beijing").strftime('%Y-%m-%d %H:%M:%S'), edit_work_order_path(work_order) %></td>
+        <td><%= link_to work_order.updated_at.strftime('%Y-%m-%d %H:%M:%S'), edit_work_order_path(work_order) %></td>
         <td><%= link_to work_order.customer.name, edit_work_order_path(work_order) %></td>
       </tr>
   <% end %>

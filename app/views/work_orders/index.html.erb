@@ -1,6 +1,6 @@
 <p>工单数量:<%= @work_orders.count %>个工单</p>
-<%= form_tag("/work_orders",method: "get") do %>
-    <% if can? :read, :all%>
+<%= form_tag("/work_orders", method: "get") do %>
+    <% if can? :read, :all %>
         <%= text_field_tag :content %>
         <%= submit_tag t('.search') %>
         <br>
@@ -45,7 +45,3 @@
       </tr>
   <% end %>
 </table>
-
-<script>
-  $('#work_orders_count').focus();
-</script>

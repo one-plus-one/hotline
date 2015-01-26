@@ -3,7 +3,7 @@
 </div>
 
 <%= render 'form' %>
-<% unless(@work_order.customer.id==nil) then %>
+<% unless (@work_order.customer.id==nil) then %>
     <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal" id="testBtn" accesskey="l">
       <%= t ('.history') %>
     </button>
@@ -17,7 +17,7 @@
           </div>
           <div class="modal-body">
             <table class="table table-hover">
-              <% @arrays.each_with_index do |array,index| %>
+              <% @arrays.each_with_index do |array, index| %>
                   <tr>
                     <td>
                       <div class="customerWidth">
@@ -26,17 +26,17 @@
                     </td>
                     <td>
                       <div class="customerWidth">
-                        <%= link_to t('.answer')+array.answer,"", id: '2:'+index.to_s %>
+                        <%= link_to t('.answer')+array.answer, "", id: '2:'+index.to_s %>
                       </div>
                     </td>
                     <td>
                       <%= link_to t('.note')+array.note, "", id: '3:'+index.to_s %>
                     </td>
                     <td>
-                      <%= link_to t('.username')+array.work_order.user.username,"", id: '4:'+index.to_s %>
+                      <%= link_to t('.username')+array.work_order.user.username, "", id: '4:'+index.to_s %>
                     </td>
                     <td>
-                      <%= link_to t('.time')+array.created_at.strftime('%Y-%m-%d %H:%M'),"",id: '5:'+index.to_s %>
+                      <%= link_to t('.time')+array.created_at.strftime('%Y-%m-%d %H:%M'), "", id: '5:'+index.to_s %>
                     </td>
                   </tr>
               <% end %>
@@ -52,15 +52,12 @@
     </div>
 <% end %>
 <script>
-    $('#top-header').ready(function(){
+    $('#top-header').ready(function () {
         offhook();
     });
 
-    $('#myModal').on('shown.bs.modal', function () {
-      $('#link_history_count').focus()
-    });
-        btnParking.disabled = true;
-        btnOnhook.disabled = false;
+    btnParking.disabled = true;
+    btnOnhook.disabled = false;
 </script>
 
 

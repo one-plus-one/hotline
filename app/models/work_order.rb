@@ -7,15 +7,12 @@ class WorkOrder < ActiveRecord::Base
 
   def save_and_update(params,customer, user)
     #update
-    if self.id!=nil
-      self.updated_user_id=user.id
-    elsif
+    if self.id==nil
       self.user_id=user.id
-      self.updated_user_id=user.id
     end
+    self.updated_user_id=user.id
     self.status = params[:status]
     self.customer_id = customer.id    #获取到当前的customerID
-    # self.user_id = user.id  #获取到当前的userID
     self.save!
   end
 end

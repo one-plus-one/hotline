@@ -39,7 +39,7 @@
         <% if can? :read, :all %>
             <td><%= link_to work_order.user.username, edit_work_order_path(work_order) %></td>
         <% end %>
-        <td><%= link_to User.find(work_order.updated_user_id).username, edit_work_order_path(work_order) %></td>
+        <td><%= link_to User.find(work_order.updated_user_id==nil ? work_order.user.id : work_order.updated_user_id).username, edit_work_order_path(work_order) %></td>
         <td><%= link_to work_order.updated_at.strftime('%Y-%m-%d %H:%M:%S'), edit_work_order_path(work_order) %></td>
         <td><%= link_to work_order.customer.name, edit_work_order_path(work_order) %></td>
       </tr>

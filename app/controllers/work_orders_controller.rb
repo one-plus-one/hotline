@@ -11,9 +11,8 @@ class WorkOrdersController < ApplicationController
         @work_orders = @work_orders.where(:user_id => user_id)
       end
     else
-      @work_orders = WorkOrder.where(:user_id => current_user.id).order(created_at: :desc)
+      @work_orders = WorkOrder.where(:user_id => current_user.id).order(updated_at: :desc)
     end
-    # @work_orders.each { |workorder|  workorder.updated_user_id= workorder.user_id end}
 
     if params[:commit] == "已解决"
       @work_orders = @work_orders.where(:status => "true")

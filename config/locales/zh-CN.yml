@@ -41,6 +41,7 @@ zh-CN:
       month: "一月"
       week: "一周"
       three_days: "三天"
+      search: "搜索"
     new:
       question: "问题"
       answer: "答案"

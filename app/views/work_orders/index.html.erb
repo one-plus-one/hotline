@@ -3,7 +3,7 @@
 <%= form_tag("/work_orders",method: "get") do %>
     <% if can? :read, :all%>
         <%= text_field_tag :content %>
-        <%= submit_tag "搜索" %>
+        <%= submit_tag t('.search') %>
         <br>
     <% end %>
 

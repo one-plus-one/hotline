@@ -7,8 +7,17 @@ RSpec.describe WorkOrdersController do
   end
 
   describe 'GET index' do
-    work_order_one = FactoryGirl.create :work_order
-    work_order_two = FactoryGirl.create :work_order, :status => "false"
+    before do
+      test_user = FactoryGirl.create :user, :username => "wyq", :email => "wyq@qq.com"
+      work_order_one = FactoryGirl.create :work_order, :user_id => test_user.id
+      work_order_two = FactoryGirl.create :work_order, :status => "false"
+    end
+
+    it "should get correct workorders according to condition" do
+      get :index, :content => "wyq"
+      expect(assigns(:work_orders)).not_to eql(nil)
+    end
+
     it "should get all workorders for current user" do
       get :index
       expect(assigns(:work_orders)).not_to eql(nil)

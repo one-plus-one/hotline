@@ -22,6 +22,8 @@
     <% if can? :read, :all %>
         <th><%= t(".user_name") %></th>
     <% end %>
+    <th><%= t('.updated_user') %></th>
+    <th><%= t('.updated_time') %></th>
     <th><%= t(".customer_name") %></th>
   </tr>
   </thead>
@@ -38,6 +40,8 @@
         <% if can? :read, :all %>
             <td><%= link_to work_order.user.username, edit_work_order_path(work_order) %></td>
         <% end %>
+        <td><%= link_to User.find(work_order.updated_user_id).username, edit_work_order_path(work_order) %></td>
+        <td><%= link_to work_order.updated_at.strftime('%Y-%m-%d %H:%M:%S'), edit_work_order_path(work_order) %></td>
         <td><%= link_to work_order.customer.name, edit_work_order_path(work_order) %></td>
       </tr>
   <% end %>

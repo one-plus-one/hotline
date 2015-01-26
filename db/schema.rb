@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120092224) do
+ActiveRecord::Schema.define(version: 20150126014652) do
 
   create_table "customer_questions", force: true do |t|
     t.string   "title"
@@ -95,6 +95,9 @@ ActiveRecord::Schema.define(version: 20150120092224) do
     t.integer  "user_id"
     t.integer  "customer_id"
     t.integer  "phone_record_id"
+    t.integer  "updated_user_id"
   end
+
+  add_index "work_orders", ["updated_user_id"], name: "index_work_orders_on_updated_user_id", using: :btree
 
 end

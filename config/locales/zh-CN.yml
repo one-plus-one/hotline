@@ -30,9 +30,11 @@ zh-CN:
       create_time: "创建时间"
       solved: "解决"
       unsolved: "未解决"
-      status: "工单状态"
+      status: "状态"
       customer_name: "客户名称"
-      user_name: "工单创建人"
+      user_name: "创建人"
+      updated_user: '修改人'
+      updated_time: '修改时间'
       all_work_orders: "所有工单"
       solved: "已解决"
       unsolved: "未解决"

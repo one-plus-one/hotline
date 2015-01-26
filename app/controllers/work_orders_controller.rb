@@ -84,7 +84,7 @@ class WorkOrdersController < ApplicationController
     customer.save(params[:work_order][:customer])
     #创建工单
     workorder = initialize_work_order(params[:id])
-    workorder.save(params[:work_order], customer, current_user)
+    workorder.save_and_update(params[:work_order], customer, current_user)
 
     # 创建问题表
     customer_questions = params[:work_order][:customer_questions_attributes]

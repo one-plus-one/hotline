@@ -2,15 +2,17 @@
 <a href="#"><%= @work_orders.count %>个工单</a>
 <%= form_tag("/work_orders",method: "get") do %>
     <% if can? :read, :all%>
-
-    <% else %>
-        <%= submit_tag t ('.all_work_orders') %>
-        <%= submit_tag t ('.solved') %>
-        <%= submit_tag t ('.unsolved') %>
-        <%= submit_tag t ('.week') %>
-        <%= submit_tag t ('.month') %>
-        <%= submit_tag t ('.three_days') %>
+        <%= text_field_tag :content %>
+        <%= submit_tag "搜索" %>
+        <br>
     <% end %>
+
+    <%= submit_tag t ('.all_work_orders') %>
+    <%= submit_tag t ('.solved') %>
+    <%= submit_tag t ('.unsolved') %>
+    <%= submit_tag t ('.week') %>
+    <%= submit_tag t ('.month') %>
+    <%= submit_tag t ('.three_days') %>
 <% end %>
 <table class="table table-hover">
   <thead>

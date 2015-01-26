@@ -6,9 +6,14 @@ class WorkOrdersController < ApplicationController
   def index
     if can? :read, :all
       @work_orders = WorkOrder.all.order(created_at: :desc)
+      if params[:content] != "" && params[:content] != nil
+        user_id = User.find_by_username(params[:content])
+        @work_orders = @work_orders.where(:user_id => user_id)
+      end
     else
       @work_orders = WorkOrder.where(:user_id => current_user.id).order(created_at: :desc)
     end
+
     if params[:commit] == "已解决"
       @work_orders = @work_orders.where(:status => "true")
     elsif params[:commit] == "未解决"

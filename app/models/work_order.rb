@@ -13,7 +13,7 @@ class WorkOrder < ActiveRecord::Base
     self.updated_user_id=user.id
     self.status = params[:status]
     self.customer_id = customer.id    #获取到当前的customerID
-    self.updated_at=Time.new
+    self.updated_at=Time.new.localtime
     self.save!
   end
 end

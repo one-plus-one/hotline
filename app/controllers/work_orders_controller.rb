@@ -7,8 +7,8 @@ class WorkOrdersController < ApplicationController
     if can? :read, :all
       @work_orders = WorkOrder.all.order(updated_at: :desc)
       if params[:content] != "" && params[:content] != nil
-        user_id = User.find_by_username(params[:content])
-        @work_orders = @work_orders.where(:user_id => user_id)
+        user = User.find_by_username(params[:content])
+        @work_orders = @work_orders.where(:user_id => user)
       end
     else
       @work_orders = WorkOrder.where(:user_id => current_user.id).order(updated_at: :desc)

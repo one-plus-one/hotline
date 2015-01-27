@@ -1,17 +1,17 @@
 <p>工单数量:<%= @work_orders.count %>个工单</p>
-<%= form_tag("/work_orders", method: "get") do %>
+<%= form_tag("/work_orders", method: "get",:class => "form-inline") do %>
     <% if can? :read, :all %>
-        <%= text_field_tag :content %>
-        <%= submit_tag t('.search') %>
+        <%= text_field_tag :content, nil, class:"form-control" %>
+        <%= submit_tag t('.search'), class: "btn btn-danger" %>
         <br>
     <% end %>
 
-    <%= submit_tag t ('.all_work_orders') %>
-    <%= submit_tag t ('.solved') %>
-    <%= submit_tag t ('.unsolved') %>
-    <%= submit_tag t ('.week') %>
-    <%= submit_tag t ('.month') %>
-    <%= submit_tag t ('.three_days') %>
+    <%= submit_tag t('.all_work_orders'), class:"btn btn-default" %>
+    <%= submit_tag t('.solved'), class: "btn btn-default" %>
+    <%= submit_tag t('.unsolved'), class: "btn btn-default" %>
+    <%= submit_tag t('.week'), class: "btn btn-default" %>
+    <%= submit_tag t('.month'), class: "btn btn-default" %>
+    <%= submit_tag t('.three_days'), class: "btn btn-default" %>
 <% end %>
 <table class="table table-hover">
   <thead>

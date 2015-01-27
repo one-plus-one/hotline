@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'catalogs/new'
+
   get 'dashboard/home'
 
   get 'oncall/:tel' => 'dashboard#oncall'
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   resources :work_orders
 
   resources :repositories
+  resources :catalogs, only: [:new,:create]
 
   # get 'workorder/index/:id' => 'workorder#index',as: 'workorder_index_id'
   # post 'workorder/:id' => 'workorder#update',as: 'update_workorder'

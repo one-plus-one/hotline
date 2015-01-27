@@ -1,1 +1,20 @@
 <h1>新建知识库问题</h1>
+<%= form_for @repository  do |f| %>
+    <div class="form form-horizontal">
+      <%= f.label '目录', :class=> 'control-label' %>
+      <%= select_tag "catalog",options_from_collection_for_select(@catalog,'id','name'), :class => 'form-control' %>
+    </div>
+
+    <div class="form form-horizontal">
+      <%= f.label '问题', :class=> 'control-label' %>
+      <%= f.text_field :title, :class => 'form-control',:placeholder => '请输入问题' %>
+    </div>
+
+    <div class="form form-horizontal">
+      <%= f.label '答案', :class=> 'control-label' %>
+      <%= f.text_area :answer, :class => 'form-control',:placeholder => '请输入问题答案' %>
+    </div>
+    <div>
+      <%= f.submit "提交", :class => 'btn btn-danger' %>
+    </div>
+<% end %>

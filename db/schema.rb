@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126014652) do
+ActiveRecord::Schema.define(version: 20150127060942) do
+
+  create_table "catalogs", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "customer_questions", force: true do |t|
     t.string   "title"
@@ -50,6 +56,14 @@ ActiveRecord::Schema.define(version: 20150126014652) do
   end
 
   add_index "phone_records", ["work_order_id"], name: "index_phone_records_on_work_order_id", using: :btree
+
+  create_table "repositories", force: true do |t|
+    t.string   "title"
+    t.text     "answer"
+    t.integer  "catalog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"

@@ -17,6 +17,7 @@
         <%= link_to (can? :read, :all) ? '所有工单' : '我的工单', work_orders_path, :class => 'btn btn-default', accesskey: 'z' %>
         </br>
     <% end %>
+        <%= link_to '知识库', repositories_path, :class => 'btn btn-default'%>
 <%= yield %>
 
 </body>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :work_orders
 
+  resources :repositories
+
   # get 'workorder/index/:id' => 'workorder#index',as: 'workorder_index_id'
   # post 'workorder/:id' => 'workorder#update',as: 'update_workorder'
   #root 'users#index'

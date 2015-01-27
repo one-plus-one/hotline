@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'answer/:tel' => 'dashboard#answer'
 
+  get 'work_orders/export'
   devise_for :users
   resources :users
 

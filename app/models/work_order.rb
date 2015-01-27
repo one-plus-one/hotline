@@ -16,4 +16,13 @@ class WorkOrder < ActiveRecord::Base
     self.updated_at=Time.new
     self.save!
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |work_order|
+        csv << work_order.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

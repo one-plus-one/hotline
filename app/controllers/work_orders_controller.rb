@@ -27,6 +27,15 @@ class WorkOrdersController < ApplicationController
     end
   end
 
+  def export
+    @work_orders = WorkOrder.all.order(updated_at: :desc)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @work_orders.to_csv}
+      format.xls { send_data @work_orders.to_csv(col_sep: '\t')}
+    end
+  end
+
   def new
     @work_order = WorkOrder.new
     @work_order.customer_questions = [CustomerQuestion.new]

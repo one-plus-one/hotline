@@ -2,7 +2,7 @@
 <%= form_for @repository  do |f| %>
     <div class="form form-horizontal">
       <%= f.label '目录', :class=> 'control-label' %>
-      <%= select_tag "catalog",options_from_collection_for_select(@catalog,'id','name'), :class => 'form-control' %>
+      <%= select_tag "catalog",options_from_collection_for_select(@catalogs,'id','name'), :class => 'form-control' %>
     </div>
 
     <div class="form form-horizontal">

@@ -29,10 +29,13 @@ class WorkOrdersController < ApplicationController
 
   def export
     @work_orders = WorkOrder.all.order(updated_at: :desc)
+
     respond_to do |format|
       format.html
-      format.csv { send_data @work_orders.to_csv}
-      format.xls { send_data @work_orders.to_csv(col_sep: '\t')}
+      @work_orders.to_xls
+      # format.xls { send_data @work_orders.to_xls}
+      # format.xls { send_data @work_orders.to_xls, content_type: 'application/vnd.ms-excel', filename: 'work_orders.xls' }
+      format.xls { send_file File.new('work_orders.xls') }
     end
   end
 

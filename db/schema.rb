@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127060942) do
+ActiveRecord::Schema.define(version: 20150128015736) do
 
   create_table "catalogs", force: true do |t|
     t.string   "name"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20150127060942) do
     t.string   "title"
     t.text     "answer"
     t.integer  "catalog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "repository_logs", force: true do |t|
+    t.string   "name"
+    t.string   "action"
+    t.text     "event"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

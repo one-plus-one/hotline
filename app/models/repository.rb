@@ -3,7 +3,7 @@ class Repository < ActiveRecord::Base
   def save(params)
     self.title = params[:repository][:title]
     self.answer = params[:repository][:answer]
-    self.catalog_id = params[:catalog]
+    self.catalog_id = params[:catalogs]
     self.save!
   end
 end

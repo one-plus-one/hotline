@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe RepositoriesController do
 
+  before do
+    sign_in
+  end
+
     describe 'get index page' do
       before do
         catalog = FactoryGirl.create :catalog
@@ -34,6 +38,7 @@ RSpec.describe RepositoriesController do
         catalog = FactoryGirl.create :catalog
         post :create, {"catalog"=> catalog.id , "repository"=>{"title"=>"哪个地方图书多啊", "answer"=>"看看"}}
         expect(response).to redirect_to(repositories_path)
+        expect(assigns[:repository_log].action).to eql("增加")
       end
     end
 
@@ -43,6 +48,7 @@ RSpec.describe RepositoriesController do
         repository = FactoryGirl.create :repository, :catalog_id => catalog.id
           delete :destroy, {"id"=> repository.id}
         expect(response).to redirect_to(repositories_path)
+        expect(assigns[:repository_log].action).to eql("删除")
       end
     end
 

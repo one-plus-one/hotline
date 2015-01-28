@@ -45,9 +45,4 @@
       </tr>
   <% end %>
 </table>
-<% if can? :read, :all %>
-    <p>
-      Download:
-      <%= link_to "Excel", export_work_orders_path(format: "xls") %>
-    </p>
-<% end %>
+

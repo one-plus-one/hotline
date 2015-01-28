@@ -8,11 +8,17 @@
     <div class="form form-horizontal">
       <%= f.label '问题', :class=> 'control-label' %>
       <%= f.text_field :title, :class => 'form-control',:placeholder => '请输入问题' %>
+      <% if @repository.errors[:title].any? %>
+          <%= f.label @repository.errors[:title][0], :class => 'control-label'%><br>
+      <% end %>
     </div>
 
     <div class="form form-horizontal">
       <%= f.label '答案', :class=> 'control-label' %>
       <%= f.text_area :answer, :class => 'form-control',:placeholder => '请输入问题答案' %>
+      <% if @repository.errors[:answer].any? %>
+          <%= f.label @repository.errors[:answer][0], :class => 'control-label'%><br>
+      <% end %>
     </div>
     <div>
       <%= f.submit "提交", :class => 'btn btn-danger' %>

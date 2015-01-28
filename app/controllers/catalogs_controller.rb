@@ -4,12 +4,12 @@ class CatalogsController < ApplicationController
   end
 
   def create
-    catalog = Catalog.new
-    catalog.name = params[:catalog][:name]
-    if catalog.save!
+    @catalog = Catalog.new
+    @catalog.name = params[:catalog][:name]
+    if @catalog.save
       redirect_to repositories_path
     else
-      redirect_to catalog_path
+      render :new
     end
   end
 end

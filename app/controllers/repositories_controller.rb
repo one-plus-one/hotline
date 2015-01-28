@@ -9,11 +9,16 @@ class RepositoriesController < ApplicationController
   end
 
   def create
-    @repository.save(params)
+    @repository.save_repository(params)
     @repository_log = RepositoryLog.new
     event = '知识库表中问题为:' + @repository.title + '的记录'
     @repository_log.save(current_user.username,'增加',event)
-    redirect_to repositories_path
+    if @repository.save
+      redirect_to repositories_path
+    else
+      @catalogs = Catalog.all
+      render :new
+    end
   end
 
   def show

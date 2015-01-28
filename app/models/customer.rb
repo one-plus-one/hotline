@@ -17,4 +17,18 @@ class Customer < ActiveRecord::Base
     self.phone_num = params[:phone_num]
     self.save!
   end
+
+  def self.add_column_names(sheet1, index)
+    column_names.each do |column_name|
+      sheet1[0,index]=column_name
+      index+=1
+    end
+  end
+  def self.add_column_value(sheet1,index_x,index_y, id)
+    customer = Customer.find(id)
+    column_names.each do |column_name|
+      sheet1[index_x,index_y]=customer[column_name]
+      index_y+=1
+    end
+  end
 end

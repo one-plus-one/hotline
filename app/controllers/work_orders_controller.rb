@@ -29,12 +29,20 @@ class WorkOrdersController < ApplicationController
 
   def export
     @work_orders = WorkOrder.all.order(updated_at: :desc)
-
+    if params[:commit] == "已解决"
+      @work_orders = @work_orders.where(:status => "true")
+    elsif params[:commit] == "未解决"
+      @work_orders = @work_orders.where(:status => "false")
+    elsif params[:commit] == "一个月"
+      @work_orders = @work_orders.where("created_at >= ?", 1.month.ago)
+    elsif params[:commit] == "三个月"
+      @work_orders = @work_orders.where("created_at >= ?", 3.month.ago)
+    elsif params[:commit] == "六个月"
+      @work_orders = @work_orders.where("created_at >= ?", 6.days.ago)
+    end
     respond_to do |format|
       format.html
       @work_orders.to_xls
-      # format.xls { send_data @work_orders.to_xls}
-      # format.xls { send_data @work_orders.to_xls, content_type: 'application/vnd.ms-excel', filename: 'work_orders.xls' }
       format.xls { send_file File.new('work_orders.xls') }
     end
   end

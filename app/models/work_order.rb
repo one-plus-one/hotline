@@ -35,6 +35,8 @@ class WorkOrder < ActiveRecord::Base
           User.add_column_value(sheet1, index_x+1, index_y, work_order[column_name])
         elsif column_name=='customer_id'
           Customer.add_column_value(sheet1, index_x+1, index_y, work_order[column_name])
+        elsif column_name=='status'
+          sheet1[index_x+1, index_y]= work_order[column_name] ? '解决' : '未解决'
         else
           sheet1[index_x+1, index_y]= work_order[column_name]
         end
@@ -52,6 +54,14 @@ class WorkOrder < ActiveRecord::Base
         User.add_column_names(sheet1, index, false)
       elsif column_name=='customer_id'
         Customer.add_column_names(sheet1, index)
+      elsif column_name=='created_at'
+        sheet1[0, index]='创建时间'
+      elsif column_name=='updated_at'
+        sheet1[0, index]='修改时间'
+      elsif column_name=='status'
+        sheet1[0, index]='状态'
+      elsif column_name=='id'
+        sheet1[0, index]='工单编号'
       else
         sheet1[0, index]=column_name
       end

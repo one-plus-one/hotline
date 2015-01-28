@@ -42,6 +42,13 @@ zh-CN:
       week: "一周"
       three_days: "三天"
       search: "搜索"
+    export_index:
+      all_work_orders: "所有工单"
+      solved: "已解决"
+      unsolved: "未解决"
+      one_month: "一个月"
+      three_month: "三个月"
+      six_month: "六个月"
     new:
       question: "问题"
       answer: "答案"

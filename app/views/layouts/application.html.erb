@@ -18,11 +18,8 @@
         </br>
     <% end %>
         <%= link_to '知识库', repositories_path, :class => 'btn btn-default'%>
-<% if can? :read, :all %>
-    <%= form_tag(export_work_orders_path(format: "xls"), method: "get", :class => "form-inline") do %>
-        <% submit_tag '提交', class: 'btn btn-default' %>
-    <% end %>
-<% end %>
+        <%= link_to '工单导出', export_index_work_orders_path, :class => 'btn btn-default'%>
+
 
 <%= yield %>
 

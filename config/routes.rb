@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :work_orders do
     get :export, :on => :collection
+    get :export_index, :on => :collection
   end
 
   resources :repositories

@@ -1,0 +1,20 @@
+<h2>目录</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <td>名称</td>
+    <td>创建时间</td>
+    <td>删除</td>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @catalogs.each do |catalog|%>
+      <tr>
+        <td><%= catalog.name %></td>
+        <td><%= catalog.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td><%= link_to '删除',catalog_path(catalog), method: :delete, :class => 'btn btn-danger', :data => { confirm: '您确定删除这条记录吗?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

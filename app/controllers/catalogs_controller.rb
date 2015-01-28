@@ -12,4 +12,14 @@ class CatalogsController < ApplicationController
       render :new
     end
   end
+
+  def index
+    @catalogs = Catalog.all
+  end
+
+  def destroy
+    catalog = Catalog.find(params[:id])
+    catalog.destroy
+    redirect_to catalogs_path
+  end
 end

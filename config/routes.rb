@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :repositories
-  resources :catalogs, only: [:new,:create]
+  resources :catalogs, only: [:new,:create,:index,:destroy]
 
   # get 'workorder/index/:id' => 'workorder#index',as: 'workorder_index_id'
   # post 'workorder/:id' => 'workorder#update',as: 'update_workorder'

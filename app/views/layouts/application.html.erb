@@ -12,12 +12,13 @@
         <button type="button" class="btn btn-default" onclick="setready()" id="btnWaiting" accesskey="z" disabled="true">就绪</button>
         <button type="button" class="btn btn-default" onclick="" id="btnOffhook" accesskey="" disabled="true">应答</button>
         <button type="button" class="btn btn-default" onclick="onhook()" id="btnOnhook" disabled="true" accesskey="g">挂机</button>
-        <%=current_user.username %>
+        <%= link_to '知识库', repositories_path, :class => 'btn btn-default'%>
+    <%=current_user.username %>
         <%= link_to '退出登录', destroy_user_session_path, :method => :delete, :class => 'btn btn-default' %>
         <%= link_to (can? :read, :all) ? '所有工单' : '我的工单', work_orders_path, :class => 'btn btn-default', accesskey: 'z' %>
         </br>
     <% end %>
-        <%= link_to '知识库', repositories_path, :class => 'btn btn-default'%>
+
 <%= yield %>
 
 </body>

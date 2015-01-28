@@ -7,13 +7,14 @@ Rails.application.routes.draw do
 
   get 'answer/:tel' => 'dashboard#answer'
 
-  get 'work_orders/export'
   devise_for :users
   resources :users
 
   root to: "dashboard#home"
 
-  resources :work_orders
+  resources :work_orders do
+    get :export, :on => :collection
+  end
 
   resources :repositories
   resources :catalogs, only: [:new,:create]

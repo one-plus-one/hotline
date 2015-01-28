@@ -13,13 +13,18 @@
     <% @repositories.each do |repository|%>
     <tr>
       <td><%= repository.catalog.name %></td>
-      <td><%= repository.title %></td>
-      <td><%= repository.answer  %></td>
+      <td>
+        <%= link_to repository.title[0,20], repository_path(repository) %>
+      </td>
+      <td>
+        <%= link_to repository.answer[0,20], repository_path(repository) %>
+      </td>
       <td><%= link_to '删除',repository_path(repository), method: :delete, :class => 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @repositories %>
 <%= link_to '新建问题', new_repository_path, class: 'btn btn-default'  %>
 <%= link_to '新建目录', new_catalog_path, :class => 'btn btn-default'%>
 

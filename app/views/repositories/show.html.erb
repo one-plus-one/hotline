@@ -1,8 +1,8 @@
-<h1>新建知识库问题</h1>
+<h3>知识库的一个展示页面</h3>
 <%= form_for @repository  do |f| %>
     <div class="form form-horizontal">
       <%= f.label '目录', :class=> 'control-label' %>
-      <%= select_tag "catalogs",options_from_collection_for_select(@catalogs,'id','name'), :class => 'form-control' %>
+      <%= select_tag 'catalogs' ,options_from_collection_for_select(@catalogs,'id','name', @repository.catalog.id), class: 'form-control' %>
     </div>
 
     <div class="form form-horizontal">
@@ -15,6 +15,6 @@
       <%= f.text_area :answer, :class => 'form-control',:placeholder => '请输入问题答案' %>
     </div>
     <div>
-      <%= f.submit "提交", :class => 'btn btn-danger' %>
+      <%= f.submit '提交', :class => 'btn btn-danger' %>
     </div>
 <% end %>

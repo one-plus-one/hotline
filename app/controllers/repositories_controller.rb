@@ -1,7 +1,7 @@
 class RepositoriesController < ApplicationController
   before_action :new_a_repository, only: [:new,:create]
   def index
-    @repositories = Repository.all
+    @repositories = Repository.page(params[:page]).per(2)
   end
 
   def new
@@ -10,11 +10,18 @@ class RepositoriesController < ApplicationController
 
   def create
     @repository.save(params)
-    if true
-      redirect_to repositories_path
-    else
-      redirect_to new_repository_path
-    end
+    redirect_to repositories_path
+  end
+
+  def show
+    @repository = Repository.find(params[:id])
+    @catalogs = Catalog.all
+  end
+
+  def update
+    @repository = Repository.find(params[:id])
+    @repository.save(params)
+    redirect_to repositories_path
   end
 
   def destroy

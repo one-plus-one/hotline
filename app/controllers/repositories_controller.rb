@@ -33,9 +33,9 @@ class RepositoriesController < ApplicationController
   end
 
   def destroy
-    @repository.destroy!
+    @repository.destroy
     @repository_log = RepositoryLog.new
-    event = '知识库表中问题为:' + repository.title + '的记录'
+    event = '知识库表中问题为:' + @repository.title + '的记录'
     @repository_log.save(current_user.username,'删除',event)
     redirect_to repositories_path
   end

@@ -34,11 +34,11 @@ RSpec.describe RepositoriesController do
 
     describe 'delete one' do
       it "should delete a useless repository" do
-        # catalog = FactoryGirl.create :catalog, :name => '其他'
-        # repository= FactoryGirl.create :repository, :catalog_id => catalog.id, :title => "清华大学"
-        # delete :destroy, { 'id' => repository.id}
-        # expect(response).to redirect_to(repositories_path)
-        # expect(assigns[:repository_log].action).to eql("删除")
+        catalog = FactoryGirl.create :catalog, :name => '其他'
+        repository = FactoryGirl.create :repository, :catalog_id => catalog.id, :title => "清华大学"
+        delete :destroy, {"id" => repository.id}
+        expect(response).to redirect_to(repositories_path)
+        expect(assigns[:repository_log].action).to eql("删除")
       end
     end
 

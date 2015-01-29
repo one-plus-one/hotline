@@ -34,14 +34,18 @@ class WorkOrder < ActiveRecord::Base
         elsif column_name=='updated_user_id'
           User.add_column_value(sheet1, index_x+1, index_y, work_order[column_name])
         elsif column_name=='customer_id'
-          Customer.add_column_value(sheet1, index_x+1, index_y, work_order[column_name])
+          index_y=Customer.add_column_value(sheet1, index_x+1, index_y, work_order[column_name])
+          index_y-=1
         elsif column_name=='status'
           sheet1[index_x+1, index_y]= work_order[column_name] ? '解决' : '未解决'
+        elsif column_name=='phone_record_id'
+          # sheet1[0, index]='工单编号'
         else
           sheet1[index_x+1, index_y]= work_order[column_name]
         end
         index_y+=1
       end
+      CustomerQuestion.add_column_value(sheet1,index_x+1,index_y,work_order.id)
     end
   end
 
@@ -53,7 +57,8 @@ class WorkOrder < ActiveRecord::Base
       elsif column_name=='updated_user_id'
         User.add_column_names(sheet1, index, false)
       elsif column_name=='customer_id'
-        Customer.add_column_names(sheet1, index)
+        index=Customer.add_column_names(sheet1, index)
+        index-=1
       elsif column_name=='created_at'
         sheet1[0, index]='创建时间'
       elsif column_name=='updated_at'
@@ -62,10 +67,13 @@ class WorkOrder < ActiveRecord::Base
         sheet1[0, index]='状态'
       elsif column_name=='id'
         sheet1[0, index]='工单编号'
+      elsif column_name=='phone_record_id'
+        # sheet1[0, index]='工单编号'
       else
         sheet1[0, index]=column_name
       end
       index+=1
     end
+    CustomerQuestion.add_column_names(sheet1,index)
   end
 end

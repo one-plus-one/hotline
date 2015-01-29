@@ -1,7 +1,5 @@
 <%= form_tag(export_work_orders_path(format: "xls"), method: "get",:class => "form-inline") do %>
     <%= submit_tag t('.all_work_orders'), class:"btn btn-default" %>
-    <%= submit_tag t('.solved'), class: "btn btn-default" %>
-    <%= submit_tag t('.unsolved'), class: "btn btn-default" %>
     <%= submit_tag t('.one_month'), class: "btn btn-default" %>
     <%= submit_tag t('.three_month'), class: "btn btn-default" %>
     <%= submit_tag t('.six_month'), class: "btn btn-default" %>

@@ -29,11 +29,7 @@ class WorkOrdersController < ApplicationController
 
   def export
     @work_orders = WorkOrder.all.order(updated_at: :desc)
-    if params[:commit] == "已解决"
-      @work_orders = @work_orders.where(:status => "true")
-    elsif params[:commit] == "未解决"
-      @work_orders = @work_orders.where(:status => "false")
-    elsif params[:commit] == "一个月"
+    if params[:commit] == "一个月"
       @work_orders = @work_orders.where("created_at >= ?", 1.month.ago)
     elsif params[:commit] == "三个月"
       @work_orders = @work_orders.where("created_at >= ?", 3.month.ago)

@@ -31,6 +31,7 @@ class Customer < ActiveRecord::Base
     sheet1[0,index+9]='户口类型'
     sheet1[0,index+10]='了解渠道'
     index+=10
+    return index
     # column_names.each do |column_name|
     #   sheet1[0,index]=column_name
     #   index+=1
@@ -50,6 +51,7 @@ class Customer < ActiveRecord::Base
     sheet1[index_x,index_y+9]=customer['address_type']
     sheet1[index_x,index_y+10]=customer['channel']
     index_y+=10
+    return index_y;
     # column_names.each do |column_name|
     #   sheet1[index_x,index_y]=customer[column_name]
     #   index_y+=1

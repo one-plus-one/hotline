@@ -18,7 +18,9 @@ RSpec.describe User do
 
   describe '.add_column_value' do
     it "should add user name to sheet" do
-
+      user= User.create(username: 'admin', password: '123456', email: 'admin@example.com')
+      User.add_column_value(sheet1,0,0,user.id)
+      expect(sheet1[0,0]).to eql('admin')
     end
   end
 end

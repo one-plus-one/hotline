@@ -2,11 +2,11 @@
 
 <%= form_for @catalog  do |f| %>
     <div class="form form-horizontal">
-      <%= f.label '目录名称', :class => 'control-label' %>
+      <%= f.label :name, t('.name'), :class => 'control-label' %>
       <%= f.text_field :name, :class => 'form-control', :placeholder => '请输入目录名称' %>
       <% if @catalog.errors[:name].any? %>
-        <%= f.label @catalog.errors[:name][0], :class => 'control-label'%><br>
+        <%= f.label @catalog.errors[:name][0], :class => 'error-label'%><br>
       <% end %>
-      <%= f.submit '提交', :class => 'btn btn-danger' %>
+      <%= f.submit t('.submit'), :class => 'btn btn-danger' %>
     </div>
 <% end %>

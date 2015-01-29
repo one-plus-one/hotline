@@ -2,11 +2,11 @@
 <table class="table">
   <thead>
     <tr>
-      <td>类别</td>
-      <td>问题</td>
-      <td>答案</td>
-      <td>创建时间</td>
-      <td>删除</td>
+      <td><%= t('.catalog') %></td>
+      <td><%= t('.title') %></td>
+      <td><%= t('.answer') %></td>
+      <td><%= t('.created_at') %></td>
+      <td><%= t('.delete') %></td>
     </tr>
   </thead>
 
@@ -28,5 +28,5 @@
 </table>
 <%= paginate @repositories %>
 <%= link_to '新建问题', new_repository_path, class: 'btn btn-default'  %>
-<%= link_to '新建目录', new_catalog_path, :class => 'btn btn-default'%>
+
 

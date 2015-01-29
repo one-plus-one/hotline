@@ -84,6 +84,25 @@ zh-CN:
       next: "下一页"
       truncate: "..."
 
+  repositories:
+    new:
+      catalog: "目录"
+      title: "问题"
+      answer: "答案"
+      submit: "提交"
+      return: "返回"
+    index:
+      catalog: "目录"
+      title: "问题"
+      answer: "答案"
+      created_at: "创建时间"
+      delete: "删除"
+
+  catalogs:
+    new:
+      name: "名称"
+      submit: "提交"
+
   activerecord:
     errors:
       messages:

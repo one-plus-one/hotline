@@ -1,6 +1,6 @@
 class RepositoriesController < ApplicationController
   before_action :new_a_repository, only: [:new,:create]
-  before_action :find_a_repository, only: [:show,:update,:destroy]
+  before_action :find_a_repository, only: [:show,:update,:destroy,:edit]
 
   def index
     @repositories = Repository.page(params[:page]).per(50)
@@ -28,7 +28,7 @@ class RepositoriesController < ApplicationController
   end
 
   def update
-    @repository.save(params)
+    @repository.save_repository(params)
     redirect_to repositories_path
   end
 
@@ -38,6 +38,10 @@ class RepositoriesController < ApplicationController
     event = '知识库表中问题为:' + @repository.title + '的记录'
     @repository_log.save(current_user.username,'删除',event)
     redirect_to repositories_path
+  end
+
+  def edit
+    @catalogs = Catalog.all
   end
 
   private

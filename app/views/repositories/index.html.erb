@@ -6,6 +6,7 @@
       <td><%= t('.title') %></td>
       <td><%= t('.answer') %></td>
       <td><%= t('.created_at') %></td>
+      <td><%= t('.edit') %></td>
       <td><%= t('.delete') %></td>
     </tr>
   </thead>
@@ -21,7 +22,8 @@
         <%= link_to repository.answer[0,20], repository_path(repository) %>
       </td>
       <td><%= repository.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-      <td><%= link_to '删除',repository_path(repository), method: :delete, :class => 'btn btn-danger', :data => { confirm: '您确定删除这条记录吗?' } %></td>
+      <td><%= link_to t('.edit'), edit_repository_path(repository), :class => 'btn btn-default' %></td>
+      <td><%= link_to t('.delete'),repository_path(repository), method: :delete, :class => 'btn btn-danger', :data => { confirm: '您确定删除这条记录吗?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -96,6 +96,7 @@ zh-CN:
       title: "问题"
       answer: "答案"
       created_at: "创建时间"
+      edit: "编辑"
       delete: "删除"
 
   catalogs:

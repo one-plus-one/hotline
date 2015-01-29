@@ -98,14 +98,20 @@ RSpec.describe WorkOrdersController do
   describe 'PUT update' do
     it "should save workorder and redirect to workorders index path" do
       work_order = FactoryGirl.create :work_order
-      put :update, {:id => work_order.id,:work_order => {
-                      :status => "未解决",
-                      :customer => {:name => "Mr.li", :age => "18", :phone_num => "1234", :disability_degree => "low"},
-                      :customer_questions_attributes => {
-                          0 => {:title => "the title", :answer => "the answer"},
-                      }
-                  }}
+      put :update, {:id => work_order.id, :work_order => {
+                     :status => "未解决",
+                     :customer => {:name => "Mr.li", :age => "18", :phone_num => "1234", :disability_degree => "low"},
+                     :customer_questions_attributes => {
+                         0 => {:title => "the title", :answer => "the answer"},
+                     }
+                 }}
       expect(response).to redirect_to(work_orders_path)
     end
+  end
+  describe 'get Export' do
+    it "should export the xls file" do
+      get :export, format: 'xls'
+      expect(response).to be_success
     end
   end
+end

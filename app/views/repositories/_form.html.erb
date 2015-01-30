@@ -1,0 +1,24 @@
+<%= form_for @repository do |f| %>
+    <div class="form form-horizontal">
+      <%= f.label '目录', :class => 'control-label' %>
+      <% if @repository.id!=nil %>
+          <%= select_tag 'catalogs', options_from_collection_for_select(@catalogs, 'id', 'name', @repository.catalog.id), class: 'form-control' %>
+      <% else %>
+          <%= select_tag "catalogs", options_from_collection_for_select(@catalogs, 'id', 'name'), :class => 'form-control' %>
+      <% end %>
+    </div>
+
+    <div class="form form-horizontal">
+      <%= f.label '问题', :class => 'control-label' %>
+      <%= f.text_field :title, :class => 'form-control', :placeholder => '请输入问题' %>
+    </div>
+
+    <div class="form form-horizontal">
+      <%= f.label '答案', :class => 'control-label' %>
+      <%= f.text_area :answer, :class => 'form-control', :placeholder => '请输入问题答案' %>
+    </div>
+    <div>
+      <%= f.submit '提交', :class => 'btn btn-danger' %>
+      <%= link_to t('.return'), repositories_path, class: 'btn btn-default' %>
+    </div>
+<% end %>

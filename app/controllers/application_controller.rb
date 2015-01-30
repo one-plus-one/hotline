@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
       else
         resource.add_role 'guest'
       end
-      resource
     end
     root_path
   end

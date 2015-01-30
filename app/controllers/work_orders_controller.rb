@@ -29,17 +29,21 @@ class WorkOrdersController < ApplicationController
 
   def export
     @work_orders = WorkOrder.all.order(updated_at: :desc)
+    find_data_buy_time
+    respond_to do |format|
+      format.html
+      @work_orders.to_xls
+      format.xls { send_file File.new('work_orders.xls') }
+    end
+  end
+
+  def find_data_buy_time
     if params[:commit] == "一个月"
       @work_orders = @work_orders.where("created_at >= ?", 1.month.ago)
     elsif params[:commit] == "三个月"
       @work_orders = @work_orders.where("created_at >= ?", 3.month.ago)
     elsif params[:commit] == "六个月"
       @work_orders = @work_orders.where("created_at >= ?", 6.days.ago)
-    end
-    respond_to do |format|
-      format.html
-      @work_orders.to_xls
-      format.xls { send_file File.new('work_orders.xls') }
     end
   end
 

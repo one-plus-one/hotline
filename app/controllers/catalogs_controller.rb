@@ -1,10 +1,9 @@
 class CatalogsController < ApplicationController
+  before_action :new_catalog, :only => [:new, :create]
   def new
-    @catalog = Catalog.new
   end
 
   def create
-    @catalog = Catalog.new
     @catalog.name = params[:catalog][:name]
     if @catalog.save
       redirect_to repositories_path
@@ -12,6 +11,7 @@ class CatalogsController < ApplicationController
       render :new
     end
   end
+
 
   def index
     @catalogs = Catalog.all
@@ -22,4 +22,10 @@ class CatalogsController < ApplicationController
     catalog.destroy
     redirect_to catalogs_path
   end
+
+  private
+  def new_catalog
+    @catalog = Catalog.new
+  end
+
 end

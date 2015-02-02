@@ -85,6 +85,8 @@ zh-CN:
       truncate: "..."
 
   repositories:
+    form:
+      return: "返回"
     new:
       catalog: "目录"
       title: "问题"

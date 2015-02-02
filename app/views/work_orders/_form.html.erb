@@ -80,7 +80,7 @@
       </fieldset>
     </div>
 
-    <div>
+    <div class="submit_back">
       <%= f.submit "提交", :class => "btn btn-danger" %>
       <% if @work_order.id!=nil %>
       <%= link_to "返回", work_orders_path, :class => "btn btn-primary" %>
